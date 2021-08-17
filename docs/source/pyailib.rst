@@ -8,6 +8,7 @@ Subpackages
    :maxdepth: 4
 
    pyailib.base
+   pyailib.compression
    pyailib.dsp
    pyailib.misc
    pyailib.utils
