@@ -11,6 +11,7 @@ import json
 import yaml
 import numpy as np
 import scipy.io as scio
+from pyailib.base.baseops import dreplace
 
 
 def loadyaml(filepath, field=None):
@@ -57,8 +58,35 @@ def loadjson(filepath, field=None):
     return data
 
 
+def _check_keys(d):
+    '''
+    checks if entries in dictionary are mat-objects. If yes
+    todict is called to change them to nested dictionaries
+    '''
+    for key in d:
+        if isinstance(d[key], scio.matlab.mio5_params.mat_struct):
+            d[key] = _todict(d[key])
+    return d
+
+
+def _todict(matobj):
+    '''
+    A recursive function which constructs from matobjects nested dictionaries
+    '''
+    d = {}
+    for strg in matobj._fieldnames:
+        elem = matobj.__dict__[strg]
+        if isinstance(elem, scio.matlab.mio5_params.mat_struct):
+            d[strg] = _todict(elem)
+        else:
+            d[strg] = elem
+    return d
+
+
 def loadmat(filepath):
     """load a mat file
+
+    see https://stackoverflow.com/questions/7008608/scipy-io-loadmat-nested-structures-i-e-dictionaries
 
     Parameters
     ----------
@@ -66,15 +94,16 @@ def loadmat(filepath):
         The file path string.
 
     """
-    return scio.loadmat(filepath)
+    mdict = scio.loadmat(filepath, struct_as_record=False, squeeze_me=True)
+    mdict = _check_keys(mdict)
+    mdict = dreplace(mdict, fv='None', rv=None, new=False)
+    del mdict['__header__'], mdict['__version__'], mdict['__globals__']
+    return mdict
 
 
-def savemat(filepath, mdict, fmt='5', dtype=None):
-    for k, v in mdict.items():
-        if np.iscomplex(v).any() and np.ndim(v) > 1:
-            mdict[k] = np.array(
-                [np.real(v), np.imag(v)]).transpose(1, 2, 0)
-            mdict[k] = mdict[k].astype('float32')
+def savemat(filepath, mdict, fmt='5'):
+    mdict = dreplace(mdict, fv=None, rv='None', new=True)
+
     scio.savemat(filepath, mdict, format=fmt)
 
     return 0
@@ -228,3 +257,4 @@ if __name__ == '__main__':
 
     for k, v in data.items():
         print(k, v)
+

@@ -12,8 +12,8 @@ import matplotlib.pyplot as plt
 bboxes = [[100, 100, 200, 200], [300, 300, 400, 500]]
 labels = ['dog', 'cat']
 scores = [0.987, None]
-edgecolors = [pl.DISTINCT_COLORS['DistinctNormRGB20'][0], None]
-edgecolors = pl.DISTINCT_COLORS['DistinctNormRGB20'][0:2]
+edgecolors = [list(pl.DISTINCT_COLORS_RGB_NORM.values())[0], None]
+edgecolors = list(pl.DISTINCT_COLORS_RGB_NORM.values())[0:2]
 linewidths = 1
 
 fontdict = {'family': 'Times New Roman',

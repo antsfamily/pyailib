@@ -112,7 +112,7 @@ def readtxt(filepath, mode=None):
         The path string of the file.
     mode : str or None, optional
         ``'line'`` --> reading line-by-line.
-        ``'all'`` --> reading all content.
+        ``'all'`` --> reading all content. (default)
 
     Returns
     -------
@@ -177,7 +177,7 @@ def readnum(filepath, pmain='Train', psub='loss', vfn=float, nshots=None):
     return v
 
 
-def readcsv(filepath, sep=',', vfn=None, nlines=None):
+def readcsv(filepath, sep=None, vfn=None, nlines=None):
     """Read a csv file and extract numbers in it.
 
     Parameters
@@ -185,7 +185,7 @@ def readcsv(filepath, sep=',', vfn=None, nlines=None):
     filepath : str
         The path string of the file.
     sep : str, optional
-        The separation character.
+        The separation character. Such as ``','`` or ``' '``. If None (default) or ``''`` (empty) return a list of all the lines.
     vfn : function or None, optional
         The function for formating the numbers. ``float`` --> convert to float number; ``int`` --> convert to integer number..., The default is ``None``, which means won't converted, string format.
     nlines : None, optional
@@ -206,11 +206,14 @@ def readcsv(filepath, sep=',', vfn=None, nlines=None):
             if not datastr:
                 break
             if datastr != '':
-                datalist = datastr.split(sep)
-                if vfn is None:
-                    numbers.append(datalist)
+                if (sep is not None) and sep != '':
+                    datalist = datastr.split(sep)
+                    if vfn is None:
+                        numbers.append(datalist)
+                    else:
+                        numbers.append([vfn(v) for v in datalist])
                 else:
-                    numbers.append([vfn(v) for v in datalist])
+                    numbers.append(datastr)
                 cnt += 1
             if cnt > nlines:
                 break

@@ -10,6 +10,9 @@ from __future__ import division, print_function, absolute_import
 
 import numpy as np
 import matplotlib.colors as mcolors
+from matplotlib import cm
+from pyailib.utils.colormaps import cmaps
+from pyailib.base.mathops import nextpow2
 
 
 # https://sashamaps.net/docs/resources/20-colors/
@@ -80,13 +83,70 @@ def rgb2gray(rgb, fmt='chnllast'):
 
     dtype = rgb.dtype
 
-    if rgb.dim() < 3:
+    if np.ndim(rgb) < 3:
         return rgb
 
     if fmt in ['chnllast', 'ChnlLast']:
-        return (0.2989 * rgb[..., 0] + 0.5870 * rgb[..., 1] + 0.1140 * rgb[..., 2]).to(dtype)
+        return (0.2989 * rgb[..., 0] + 0.5870 * rgb[..., 1] + 0.1140 * rgb[..., 2]).astype(dtype)
     if fmt in ['chnlfirst', 'ChnlFirst']:
-        return (0.2989 * rgb[0, ...] + 0.5870 * rgb[1, ...] + 0.1140 * rgb[2, ...]).to(dtype)
+        return (0.2989 * rgb[0, ...] + 0.5870 * rgb[1, ...] + 0.1140 * rgb[2, ...]).astype(dtype)
+
+
+def gray2rgb(gray, cmap, drange=[0, 255], isfmt=False):
+    r"""Converts gray image values to rgb image
+
+    converts 'gray' image values to rgb image according to the specified colormap string 'cmap',
+    supported are: 'parula', 'jet', 'hsv', 'hot', 'cool', 'spring', 'summer', 'autumn',
+    'winter', 'gray', 'bone', 'copper', 'pink', 'lines', 'colorcube', 'prism', 'flag', 'white'.
+
+    Parameters
+    ----------
+    gray : numpy array
+        The gray image.
+    cmap : str
+        colormap string
+    drange : list or tuple
+        The low and high value, default is ``[0, 255]``
+    isfmt : bool
+        Specifies whether to format the output rgb matrix to unsigned integer type. (default is False)
+
+
+    Examples
+    --------
+    import pyailib as pl
+    import matplotlib.pyplot as plt
+
+    gray = pl.imread('coins.png')
+    rgb = gray2rgb(gray, 'jet', [0, 1], False)  # jet, rgb --> double, [0, 1]
+    rgb = gray2rgb(gray, 'jet', [0, 255], False)  # jet, rgb --> double, [0, 255]
+    rgb = gray2rgb(gray, 'jet', [0, 255], True)  # jet, rgb --> uint8, [0, 255]
+    rgb = gray2rgb(gray, 'hsv', [0, 255], True)  # hsv, rgb --> uint8, [0, 255]
+    rgb = gray2rgb(gray, 'parula', [0, 255], True)  # parula, rgb --> uint8, [0, 255]
+
+    print(gray.shape, np.min(gray), np.max(gray))
+    print(rgb.shape, np.min(rgb), np.max(rgb))
+
+    plt.figure()
+    plt.subplot(121)
+    plt.imshow(gray)
+    plt.subplot(122)
+    plt.imshow(rgb)
+    plt.show()
+    """
+
+    if cmap == 'parula':
+        colormap = cmaps['parula']
+    else:
+        colormap = cm.get_cmap(cmap, drange[1] - drange[0] + 1)
+    rgb = colormap(gray)[:, :, :3]
+
+    rgb = drange[0] + (drange[1] - drange[0]) * rgb  # [drange(1), drange(2)]
+    if isfmt:
+        fmtstr = 'uint' + str(nextpow2(drange[1]))
+        rgb = rgb.astype(fmtstr)
+
+    return rgb
+
 
 
 if __name__ == '__main__':
@@ -98,3 +158,29 @@ if __name__ == '__main__':
     A = np.random.randn(3, 5, 4)
     print(A)
     print(rgb2gray(A, fmt='chnllast'))
+
+    import pyailib as pl
+    import matplotlib.pyplot as plt
+    import numpy as np
+
+    x = np.linspace(0.0, 1.0, 100)
+    print(plt.get_cmap('hsv')(x)[:, :3].shape, "===")
+
+    gray = pl.imread('../../data/images/LenaGRAY256.png')
+    print(gray.shape)
+
+    # rgb = gray2rgb(gray, 'jet', [0, 1], False)  # jet, rgb --> double, [0, 1]
+    # rgb = gray2rgb(gray, 'jet', [0, 255], False)  # jet, rgb --> double, [0, 255]
+    # rgb = gray2rgb(gray, 'jet', [0, 255], True)  # jet, rgb --> uint8, [0, 255]
+    # rgb = gray2rgb(gray, 'hsv', [0, 255], True)  # hsv, rgb --> uint8, [0, 255]
+    rgb = gray2rgb(gray, 'parula', [0, 255], True)  # parula, rgb --> uint8, [0, 255]
+
+    print(gray.shape, np.min(gray), np.max(gray))
+    print(rgb.shape, np.min(rgb), np.max(rgb))
+
+    plt.figure()
+    plt.subplot(121)
+    plt.imshow(gray)
+    plt.subplot(122)
+    plt.imshow(rgb)
+    plt.show()

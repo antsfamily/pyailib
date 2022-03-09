@@ -5,6 +5,21 @@
 # @Link    : http://iridescent.ink
 # @Version : $1.0$
 from __future__ import division, print_function, absolute_import
+import copy
+
+
+def dreplace(d, fv=None, rv='None', new=False):
+    fvtype = type(fv)
+    if new:
+        d = copy.deepcopy(d)
+    for k, v in d.items():
+        if type(v) is dict:
+            dreplace(v, fv=fv, rv=rv)
+        else:
+            if type(v) == fvtype:
+                if v == fv:
+                    d[k] = rv
+    return d
 
 
 def dmka(D, Ds):

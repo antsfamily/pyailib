@@ -15,6 +15,11 @@ d = {'1': 1, '2': a}
 s = 'Hello, the future!'
 t = (0, 1)
 
+pl.savemat('./data.mat', {'a': a, 'b': b, 'c': c, 'd': d, 's': s})
+data = pl.loadmat('./data.mat')
+print(data.keys())
+
+print("==========")
 pl.saveh5('./data.h5', {'a': a, 'b': b, 'c': c, 'd': d, 's': s})
 data = pl.loadh5('./data.h5', keys=['a', 's'])
 print(data.keys())

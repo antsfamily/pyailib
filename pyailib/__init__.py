@@ -1,14 +1,15 @@
 from __future__ import division, print_function, absolute_import
 from .version import __version__
 from .utils.const import *
-from .utils.colors import rgb2gray, DISTINCT_COLORS_HEX, DISTINCT_COLORS_RGB, DISTINCT_COLORS_CMYK, DISTINCT_COLORS_RGB_NORM, BASE_COLORS, TABLEAU_COLORS, CSS4_COLORS
+from .utils.colors import rgb2gray, gray2rgb, DISTINCT_COLORS_HEX, DISTINCT_COLORS_RGB, DISTINCT_COLORS_CMYK, DISTINCT_COLORS_RGB_NORM, BASE_COLORS, TABLEAU_COLORS, CSS4_COLORS
+from .utils.colormaps import cmaps, magma, inferno, plasma, viridis, parula
 from .utils.convert import str2list, str2num
 from .utils.ios import loadyaml, loadjson, loadmat, savemat, loadh5, saveh5, mvkeyh5
 from .utils.image import imread, imsave, histeq, imresize
 from .utils.file import listxfile, pathjoin, fileparts, readtxt, readnum, readcsv
 from .utils.plot_show import cplot, plots, Plots
 
-from .base.baseops import dmka
+from .base.baseops import dreplace, dmka
 from .base.arrayops import sl, cut, cat, arraycomb
 from .base.mathops import nextpow2, prevpow2, ebeo, real2complex, complex2real
 from .base.randomfunc import setseed, randgrid, randperm, randperm2d
