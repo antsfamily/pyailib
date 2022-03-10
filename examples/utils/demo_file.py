@@ -8,7 +8,7 @@
 
 import pyailib as pl
 
-files = pl.listxfile(listdir='/home/liu/', exts=None, recursive=False, filelist=[])
+files = pl.listxfile(listdir='../../data/images/', exts='.png', recursive=False, filelist=[])
 print(files)
 
 filepath = pl.pathjoin('a', 'b', 'c', '.d')
