@@ -10,6 +10,7 @@ Subpackages
    pyailib.base
    pyailib.compression
    pyailib.dsp
+   pyailib.evaluation
    pyailib.misc
    pyailib.utils
 

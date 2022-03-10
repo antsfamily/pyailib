@@ -4,6 +4,14 @@ pyailib.misc package
 Submodules
 ----------
 
+pyailib.misc.bounding\_box module
+---------------------------------
+
+.. automodule:: pyailib.misc.bounding_box
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 pyailib.misc.draw\_shapes module
 --------------------------------
 

@@ -4,6 +4,14 @@ pyailib.utils package
 Submodules
 ----------
 
+pyailib.utils.colormaps module
+------------------------------
+
+.. automodule:: pyailib.utils.colormaps
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 pyailib.utils.colors module
 ---------------------------
 
@@ -56,6 +64,14 @@ pyailib.utils.plot\_show module
 -------------------------------
 
 .. automodule:: pyailib.utils.plot_show
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyailib.utils.typevalue module
+------------------------------
+
+.. automodule:: pyailib.utils.typevalue
    :members:
    :undoc-members:
    :show-inheritance:
