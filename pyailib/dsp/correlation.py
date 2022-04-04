@@ -153,7 +153,7 @@ def fftcorr1(x, h, shape='same', axis=0, nfft=None, ftshift=False, eps=None):
     axis : int, optional
         correlation axis (the default is 0)
     nfft : int, optional
-        number of fft points (the default is None, :math:`2^nextpow2(N_x+N_h-1)`),
+        number of fft points (the default is None, :math:`2^{nextpow2(N_x+N_h-1)}`),
         note that :attr:`nfft` can not be smaller than :math:`N_x+N_h-1`.
     ftshift : bool, optional
         whether shift frequencies (the default is False)
@@ -194,7 +194,7 @@ def fftcorr1(x, h, shape='same', axis=0, nfft=None, ftshift=False, eps=None):
     return y
 
 
-def xcorr(A, B, shape='same', axis=0):
+def xcorr(A, B, shape='same', mod=None, axis=0):
     r"""Cross-correlation function estimates.
 
 
@@ -204,12 +204,17 @@ def xcorr(A, B, shape='same', axis=0):
         data1
     B : numpy array
         data2
+    shape : str, optional
+        output shape:
+        1. ``'same'`` --> same size as input x, :math:`N_x`
+        2. ``'valid'`` --> valid correlation output
+        3. ``'full'`` --> full correlation output, :math:`N_x+N_h-1`
     mod : str, optional
-        - 'biased': scales the raw cross-correlation by 1/M.
-        - 'unbiased': scales the raw correlation by 1/(M-abs(lags)).
-        - 'coeff': normalizes the sequence so that the auto-correlations
+        - ``'biased'``: scales the raw cross-correlation by 1/M.
+        - ``'unbiased'``: scales the raw correlation by 1/(M-abs(lags)).
+        - ``'coeff'``: normalizes the sequence so that the auto-correlations
                    at zero lag are identically 1.0.
-        - 'none': no scaling (this is the default).
+        - ``None``: no scaling (this is the default).
     """
 
     if np.ndim(A) == 1 and np.ndim(B) == 1:
@@ -258,7 +263,7 @@ def accc(Sr, isplot=False):
     Average cross correlation coefficient (ACCC)
 
     .. math::
-       $\overline{C(\eta)}=\sum_{\eta} s^{*}(\eta) s(\eta+\Delta \eta)$
+       \overline{C(\eta)}=\sum_{\eta} s^{*}(\eta) s(\eta+\Delta \eta)
 
     where, :math:`\eta, \Delta \eta` are azimuth time and it's increment.
 
@@ -266,7 +271,7 @@ def accc(Sr, isplot=False):
     Parameters
     ----------
     Sr : numpy array
-        SAR raw signal data :math:`N_a×N_r` or range compressed data.
+        SAR raw signal data :math:`N_a\times N_r` or range compressed data.
 
     Returns
     -------

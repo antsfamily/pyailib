@@ -28,6 +28,47 @@ def draw_rectangle(x, rects, edgecolors=[[255, 0, 0]], linewidths=[1], fillcolor
         The color for filling.
     axes : int, optional
         The axes for drawing the rect (default [(-3, -2)]).
+
+    Returns
+    -------
+    x : numpy array
+        Output image array with rectangle shapes.
+
+    see :func:`fmt_bbox`
+
+    Example
+    -------
+
+    Draw rectangles in an figure, and return the result image array.
+
+    .. image:: ./_static/demo_draw_rectangles.png
+       :scale: 100 %
+       :align: center
+
+    The results shown in the above figure can be obtained by the following codes.
+
+    ::
+
+        import pyailib as pl
+        import matplotlib.pyplot as plt
+
+        print(pl.__version__)
+
+        x = pl.imread('../../data/images/LenaRGB512.tif')
+        print(x.shape)
+
+        # rects, edgecolors, fillcolors, linewidths = [[0, 0, 511, 511]], [None], [[0, 255, 0]], [1]
+        # rects, edgecolors, fillcolors, linewidths = [[0, 0, 511, 511]], [[255, 0, 0]], [None], [1]
+        # rects, edgecolors, fillcolors, linewidths = [[0, 0, 511, 511]], [[255, 0, 0]], [[0, 255, 0]], [1]
+        rects, edgecolors, fillcolors, linewidths = [[64, 64, 128, 128], [200, 200, 280, 400]], [[0, 255, 0], [0, 0, 255]], [None, [255, 255, 0]], [1, 6]
+
+        y = pl.draw_rectangle(x, rects, edgecolors=edgecolors, linewidths=linewidths, fillcolors=fillcolors, axes=[(0, 1)])
+
+        pl.imsave('out.png', y)
+        plt.figure()
+        plt.imshow(y)
+        plt.show()
+        
     """
 
     axes = axes * len(rects) if len(axes) == 1 and len(rects) > 1 else axes

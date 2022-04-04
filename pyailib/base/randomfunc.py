@@ -47,7 +47,13 @@ def randperm(start, stop, n):
     n : int, list or None
         the number of samples (default None, (stop - start))
 
-    see :func:`randgrid`.
+    Returns
+    -------
+    P : list
+        the randomly permuted intergers. 
+
+    see :func:`randgrid`, :func:`randperm2d`.
+
     """
 
     if (n is not None) and (type(n) is not int):
@@ -82,6 +88,17 @@ def randperm2d(H, W, number, population=None, mask=None):
         random numbers
     population : {list or numpy array(1d or 2d)}
         part of population in range(0, H*W)
+
+
+    Returns
+    -------
+        Ph : list
+            the randomly permuted intergers in height direction. 
+        Pw : list
+            the randomly permuted intergers in width direction. 
+
+    see :func:`randgrid`, :func:`randperm`.
+    
     """
 
     if population is None:
@@ -126,8 +143,18 @@ def randgrid(start, stop, step, shake=0, n=None):
     -------
         for multi-dimension, return a list of lists, for 1-dimension, return a list of numbers.
 
+    see :func:`randperm`.
+
     Example
     -------
+
+    Plot sampled randperm and randgrid point.
+
+    .. image:: ./_static/demo_randgrid.png
+       :scale: 100 %
+       :align: center
+
+    The results shown in the above figure can be obtained by the following codes.
 
     ::
 
@@ -150,25 +177,37 @@ def randgrid(start, stop, step, shake=0, n=None):
         print(Rh)
         print(Rw)
 
-        y = randperm(0, 8192, 800)
-        x = randperm(0, 8192, 800)
+        N, H, W = 32, 512, 512
 
-        y, x = randgrid([0, 0], [512, 512], [64, 64], [0.0, 0.], 32)
-        print(len(y), len(x))
+        y1 = pl.randperm(0, H, N)
+        x1 = pl.randperm(0, W, N)
+        print(len(y1), len(x1))
+
+        y2 = pl.randgrid(0, H, 32, 0., N)
+        x2 = pl.randgrid(0, W, 32, 0., N)
+        print(len(y2), len(x2))
+        print(y2, x2)
+
+        y3, x3 = pl.randperm([0, 0], [H, W], N)
+        print(len(y3), len(x3))
+
+        y4, x4 = pl.randgrid([0, 0], [H, W], [32, 32], [0.25, 0.25], N)
+        print(len(y4), len(x4))
 
         plt.figure()
-        plt.plot(x, y, 'o')
+        plt.subplot(221)
+        plt.grid()
+        plt.plot(x1, y1, '*')
+        plt.subplot(222)
+        plt.grid()
+        plt.plot(x2, y2, '*')
+        plt.subplot(223)
+        plt.grid()
+        plt.plot(x3, y3, '*')
+        plt.subplot(224)
+        plt.grid()
+        plt.plot(x4, y4, '*')
         plt.show()
-
-        y, x = randgrid([0, 0], [8192, 8192], [256, 256], [0., 0.], 400)
-        print(len(y), len(x))
-
-        plt.figure()
-        plt.plot(x, y, '*')
-        plt.show()
-
-
-    see :func:`randperm`.
 
     """
 

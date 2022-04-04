@@ -218,6 +218,7 @@ def sample_tensor(x, n, axis=0, groups=1, mode='sequentially', seed=None, extra=
 
 
     Example:
+
         ::
 
             setseed(2020, 'numpy')
@@ -299,6 +300,8 @@ def shuffle_tensor(x, axis=0, groups=1, mode='inter', seed=None, extra=False):
 
 
     Example:
+
+        Shuffle a tensor randomly with different modes (``'intra'``, ``'inter'``, ``'whole'``).
 
         ::
 
@@ -415,6 +418,63 @@ def tensor2patch(x, n=None, size=(256, 256), axis=(0, 1), start=(0, 0), stop=(No
 
     Returns:
         (ndarray): A tensor of sampled patches.
+    
+    see :func:`patch2tensor`.
+
+    Example:
+
+        Sample patches from a tensor with different mode (randperm, randgrid, slidegrid), 
+        and then reform these patches into an image.
+
+        .. image:: ./_static/demo_sample_patch.png
+        :scale: 100 %
+        :align: center
+
+        The results shown in the above figure can be obtained by the following codes.
+
+        ::
+
+            import math
+            import numpy as np
+            import pyailib as pl
+            import matplotlib.pyplot as plt
+
+            filename = '../../data/images/Lotus512.png'
+            filename = '../../data/images/LenaRGB512.tif'
+
+            x = pl.imread(filename)
+            xshape = x.shape
+            xshape = xshape[:2]
+
+            n, size = 64, (64, 64)
+
+            y1 = pl.tensor2patch(x, n=n, size=size, axis=(0, 1), step=(1, 1), shake=(0, 0), mode='randperm', seed=2020)
+            y2 = pl.tensor2patch(x, n=n, size=size, axis=(0, 1), step=(64, 64), shake=(0, 0), mode='randgrid', seed=2020)
+            y3 = pl.tensor2patch(x, n=n, size=size, axis=(0, 1), step=(64, 64), shake=(0, 0), mode='slidegrid', seed=2020)
+            y4 = pl.tensor2patch(x, n=n, size=size, axis=(0, 1), step=(64, 64), shake=(32, 32), mode='slidegrid', seed=2020)
+
+            print(y1.shape, y2.shape, y3.shape, y4.shape)
+
+            Y1 = pl.patch2tensor(y1, size=xshape, axis=(1, 2), mode='nfirst')
+            Y2 = pl.patch2tensor(y2, size=xshape, axis=(1, 2), mode='nfirst')
+            Y3 = pl.patch2tensor(y3, size=xshape, axis=(1, 2), mode='nfirst')
+            Y4 = pl.patch2tensor(y4, size=xshape, axis=(1, 2), mode='nfirst')
+
+            plt.figure()
+            plt.subplot(221)
+            plt.imshow(Y1)
+            plt.title('randperm, shake=(0, 0)')
+            plt.subplot(222)
+            plt.imshow(Y2)
+            plt.title('randgrid, shake=(0, 0)')
+            plt.subplot(223)
+            plt.imshow(Y3)
+            plt.title('slidegrid, shake=(0, 0)')
+            plt.subplot(224)
+            plt.imshow(Y4)
+            plt.title('slidegrid, shake=(32, 32)')
+            plt.show()
+
     """
 
     axis = [axis] if type(axis) is int else list(axis)
@@ -481,6 +541,9 @@ def patch2tensor(p, size=(256, 256), axis=(1, 2), mode='nfirst'):
 
     Returns:
         ndarray: Merged tensor.
+    
+    see :func:`tensor2patch`.
+
     """
 
     naxis = len(axis)

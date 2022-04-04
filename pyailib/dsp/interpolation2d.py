@@ -14,7 +14,6 @@ def interp2d(X, ratio=(2, 2), axis=(0, 1), method='cubic'):
 
     Hin, Win = X.shape[axis[0]], X.shape[axis[1]]
     Hout, Wout = int(Hin * ratio[0]), int(Win * ratio[1])
-    # yin, xin = np.mgrid[0:Hin:Hin*1j, 0:Win:Win*1j]
     yin, xin = np.mgrid[0:Hin:1, 0:Win:1]
     yout, xout = np.linspace(0, Hout, Hout), np.linspace(0, Wout, Wout)
 

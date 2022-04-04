@@ -158,7 +158,7 @@ def fftconv1(x, h, shape='same', axis=0, nfft=None, ftshift=False, eps=None):
     axis : int, optional
         convolution axis (the default is 0)
     nfft : int, optional
-        number of fft points (the default is :math:`2^nextpow2(N_x+N_h-1)`),
+        number of fft points (the default is :math:`2^{nextpow2(N_x+N_h-1)}`),
         note that :attr:`nfft` can not be smaller than :math:`N_x+N_h-1`.
     ftshift : bool, optional
         whether shift frequencies (the default is False)

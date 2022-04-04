@@ -101,12 +101,12 @@ def eval_detection_voc(
         The keys, value-types and the description of the values are listed
         below.
 
-        * **ap** (*numpy.ndarray*): An array of average precisions. \
+        - **ap** (ndarray): An array of average precisions. \
             The :math:`l`-th value corresponds to the average precision \
             for class :math:`l`. If class :math:`l` does not exist in \
             either :obj:`pred_labels` or :obj:`gt_labels`, the corresponding \
             value is set to :obj:`numpy.nan`.
-        * **map** (*float*): The average of Average Precisions over classes.
+        - **map** (float): The average of Average Precisions over classes.
 
     """
 

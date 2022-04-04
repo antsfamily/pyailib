@@ -43,6 +43,46 @@ def plot_bbox(bboxes, labels=None, scores=None, edgecolors=None, linewidths=1, f
 
     see :func:`fmt_bbox`
 
+    Example
+    -------
+
+    Plot bounding boxes with scores and labels on an image.
+
+    .. image:: ./_static/demo_plot_bboxes.png
+       :scale: 100 %
+       :align: center
+
+    The results shown in the above figure can be obtained by the following codes.
+
+    ::
+
+        import pyailib as pl
+        import matplotlib.pyplot as plt
+
+        bboxes = [[100, 100, 200, 200], [300, 300, 400, 500]]
+        labels = ['dog', 'cat']
+        scores = [0.987, None]
+        edgecolors = [list(pl.DISTINCT_COLORS_RGB_NORM.values())[0], None]
+        edgecolors = list(pl.DISTINCT_COLORS_RGB_NORM.values())[0:2]
+        linewidths = [2, 4]
+
+        fontdict = {'family': 'Times New Roman',
+                    'style': 'italic',
+                    'weight': 'normal',
+                    'color': 'darkred',
+                    'size': 12,
+                    }
+
+        x = pl.imread('../../data/images/LenaRGB512.tif')
+        fig = plt.figure()
+        ax = fig.add_subplot(1, 1, 1)
+        ax.imshow(x)
+
+        pl.plot_bbox(bboxes, labels=labels, scores=scores, edgecolors=edgecolors, linewidths=linewidths, fontdict=fontdict, textpos='TopLeft', ax=ax)
+        plt.axis('off')
+        plt.savefig('./bbbox.png', bbox_inches='tight', pad_inches=0)
+        plt.show()
+
     """
     nbox = len(bboxes)
     labels = [labels] * nbox if labels is None or type(labels) is str else labels

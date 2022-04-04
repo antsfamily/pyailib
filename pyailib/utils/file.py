@@ -30,7 +30,7 @@ def listxfile(listdir=None, exts=None, recursive=False, filelist=[]):
     Returns
     -------
     list
-        The list of file path with extension :attr:`exts`.
+        The list of file path with extension :attr:`exts`. Sometimes you need to sort the list using ``sorted``. 
 
     """
 

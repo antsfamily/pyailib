@@ -9,7 +9,7 @@ import numpy as np
 
 
 def sl(dims, axis, idx=None):
-    """slice any axis
+    r"""slice any axis
 
     generates slice of specified axis.
 
@@ -26,6 +26,40 @@ def sl(dims, axis, idx=None):
     -------
     tuple of slice
         slice for specified axis elements.
+
+    Examples
+    --------
+
+    ::
+
+        import numpy as np
+
+        np.random.seed(2020)
+        X = np.random.randint(0, 100, (9, 10))
+        print(X, 'X)
+        print(X[sl(2, -1, [0, 1])], 'Xsl')
+
+        # output:
+
+        [[96  8 67 67 91  3 71 56 29 48]
+        [32 24 74  9 51 11 55 62 67 69]
+        [48 28 20  8 38 84 65  1 79 69]
+        [74 73 62 21 29 90  6 38 22 63]
+        [21 68  6 98  3 20 55  1 52  9]
+        [83 82 65 42 66 55 33 80 82 72]
+        [94 91 14 14 75  5 38 83 99 10]
+        [80 64 79 30 84 22 46 26 60 13]
+        [24 63 25 89  9 69 47 89 55 75]] X
+        [[96  8]
+        [32 24]
+        [48 28]
+        [74 73]
+        [21 68]
+        [83 82]
+        [94 91]
+        [80 64]
+        [24 63]] Xsl
+
     """
 
     idxall = [slice(None)] * dims
@@ -43,7 +77,7 @@ def sl(dims, axis, idx=None):
 
 
 def cut(x, pos, axis=None):
-    """Cut array at given position.
+    r"""Cut array at given position.
 
     Cut array at given position.
 
@@ -96,6 +130,40 @@ def cat(arrays, axis=None, out=None):
 
 
 def arraycomb(arrays, out=None):
+    r"""compute the elemnts combination of several lists.
+
+    Args:
+        arrays (list or numpy array): The lists or arrays.
+        out (numpy array, optional): The combination results (defaults is ``None``).
+
+    Returns:
+        numpy array: The combination results.
+
+    Examples:
+
+    Compute the combination of three lists: :math:`[1,2,3]`, :math:`[4, 5]`, :math:`[6,7]`,
+    this will produce a :math:`12\times 3` array.
+
+    ::
+
+        x = arraycomb(([1, 2, 3], [4, 5], [6, 7]))
+        print(x, x.shape)
+
+        # output:
+        [[1 4 6]
+        [1 4 7]
+        [1 5 6]
+        [1 5 7]
+        [2 4 6]
+        [2 4 7]
+        [2 5 6]
+        [2 5 7]
+        [3 4 6]
+        [3 4 7]
+        [3 5 6]
+        [3 5 7]] (12, 3)
+
+    """
     arrays = [np.asarray(x) for x in arrays]
     dtype = arrays[0].dtype
     n = np.prod([x.size for x in arrays])
@@ -115,6 +183,7 @@ def arraycomb(arrays, out=None):
 
 if __name__ == '__main__':
 
+    np.random.seed(2020)
     X = np.random.randint(0, 100, (9, 10))
     print('X')
     print(X)
@@ -128,9 +197,16 @@ if __name__ == '__main__':
     print('cut(X, ((1, 4), (1, 4), (5, 8), (7, 9)), axis=(0, 1, 0, 1))')
     print(Y)
 
-
-    print(X[sl(2, -1, [0, 1])])
+    print('--------------------sl')
+    print(X, 'X')
+    print(X[sl(2, -1, [[0, 1]])], 'Xsl')
     print(X[:, 0:2])
+    print('--------------------cat')
+    print(cat(([], [], np.array([[1, 2], [3, 4]])), axis=0))
+
+    print('--------------------arraycomb')
+    x = arraycomb(([1, 2, 3], [4, 5], [6, 7]))
+    print(x, x.shape)
 
     x = arraycomb(([1, 2, 3, 4], [4, 5], [6, 7]))
     print(x, x.shape)
@@ -141,4 +217,3 @@ if __name__ == '__main__':
     x = arraycomb([[0, 64, 128, 192, 256, 320, 384, 448], [0,  64, 128, 192, 256, 320, 384, 448]])
     print(x, x.shape)
 
-    print(cat(([], [], np.array([[1, 2], [3, 4]])), axis=0))

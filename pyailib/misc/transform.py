@@ -8,7 +8,7 @@
 import numpy as np
 from pyailib.utils.const import EPS
 from pyailib.base.arrayops import sl
-from pyailib.base.mathops import nextpow2, complex2real, real2complex
+from pyailib.base.mathops import nextpow2, cplx2real, real2cplx
 
 
 def standardization(X, mean=None, std=None, axis=None, extra=False):
@@ -83,7 +83,7 @@ def scale(X, st=[0, 1], sf=None, istrunc=True, extra=False):
         cflag = True
 
     if cflag:
-        X = complex2real(X)
+        X = cplx2real(X)
 
     X = X.astype(np.float32)
 
@@ -109,7 +109,7 @@ def scale(X, st=[0, 1], sf=None, istrunc=True, extra=False):
         X[X > b] = b
 
     if cflag:
-        X = real2complex(X)
+        X = real2cplx(X)
 
     if extra:
         return (X - a) * (d - c) / (b - a + EPS) + c, st, sf
@@ -150,7 +150,7 @@ def quantization(X, idrange=None, odrange=[0, 31], odtype='auto', extra=False):
         cflag = True
 
     if cflag:
-        X = complex2real(X)
+        X = cplx2real(X)
 
     if not(isinstance(odrange, (tuple, list)) and len(odrange) == 2):
         raise Exception("'odrange' is a tuple or list, such as (-1,1)")
@@ -185,7 +185,7 @@ def quantization(X, idrange=None, odrange=[0, 31], odtype='auto', extra=False):
         X = X.to(eval(odtype))
 
     if cflag:
-        X = real2complex(X)
+        X = real2cplx(X)
 
     if extra:
         return X, idrange, odrange

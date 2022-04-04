@@ -41,7 +41,7 @@ def str2num(s, tfunc=None):
     s : str
         The string.
     tfunc : None, optional
-        formating function.
+        formating function, such as ``int``, ``float``.
 
     Returns
     -------

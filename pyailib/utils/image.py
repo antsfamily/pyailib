@@ -31,7 +31,7 @@ def histeq(img, nbins=256):
 
 
 def imresize(img, oshape=None, odtype=None, order=1, mode='constant', cval=0, clip=True, preserve_range=False):
-    """resize image to oshape
+    r"""resize image to oshape
 
     see :func:`skimage.transform.resize`.
 

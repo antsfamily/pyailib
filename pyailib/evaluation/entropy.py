@@ -12,7 +12,10 @@ from pyailib.utils.const import EPS
 def entropy(X, caxis=None, mode='shannon', reduction='mean'):
     r"""compute the entropy of the inputs
 
-    [description]
+    .. math::
+        {\rm ENT} = -\sum_{n=0}^N p_i{\rm log}_2 p_n
+
+    where $N$ is the number of pixels, $p_n=\frac{|X_n|^2}{\sum_{n=0}^N|X_n|^2}$.
 
     Parameters
     ----------

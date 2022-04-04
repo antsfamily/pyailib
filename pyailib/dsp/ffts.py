@@ -128,7 +128,7 @@ def fftshift(x, axis=None):
 
     See Also
     --------
-    ifftshift : The inverse of `fftshift`.
+    ifftshift : The inverse of :func:`fftshift`.
 
     Examples
     --------
@@ -180,7 +180,7 @@ def fftshift(x, axis=None):
 def ifftshift(x, axis=None):
     r"""Shift the zero-frequency component back.
 
-    The inverse of `fftshift`. Although identical for even-length `x`, the
+    The inverse of :func:`fftshift`. Although identical for even-length `x`, the
     functions differ by one sample for odd-length `x`.
 
     Parameters

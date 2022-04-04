@@ -96,9 +96,10 @@ def rgb2gray(rgb, fmt='chnllast'):
 def gray2rgb(gray, cmap, drange=[0, 255], fmtstr=False):
     r"""Converts gray image values to rgb image
 
-    converts 'gray' image values to rgb image according to the specified colormap string 'cmap',
-    supported are: 'parula', 'jet', 'hsv', 'hot', 'cool', 'spring', 'summer', 'autumn',
-    'winter', 'gray', 'bone', 'copper', 'pink', 'lines', 'colorcube', 'prism', 'flag', 'white'.
+    converts `gray` image values to rgb image according to the specified colormap string 'cmap',
+    supported are: ``'parula'``, ``'jet'``, ``'hsv'``, ``'hot'``, ``'cool'``, ``'spring'``,
+    ``'summer'``, ``'autumn'``, ``'winter'``, ``'gray'``, ``'bone'``, ``'copper'``, ``'pink'``,
+    ``'lines'``, ``'colorcube'``, ``'prism'``, ``'flag'``, ``'white'``.
 
     Parameters
     ----------
@@ -110,34 +111,37 @@ def gray2rgb(gray, cmap, drange=[0, 255], fmtstr=False):
         The low and high value, default is ``[0, 255]``
     fmtstr : bool or str
         Specifies the format (``'int'``, ``'uint8'``, ``'uint16'``, ``'uint32'``, ``'float16'``,
-        ``float32``, , ``float64``) for the output rgb matrix. (default is ``False``, don't change)
+        ``'float32'``, , ``'float64'``) for the output rgb matrix. (default is ``False``, don't change)
 
     Examples
     --------
-    import pyailib as pl
-    import matplotlib.pyplot as plt
-    import numpy as np
 
-    cmap = 'jet'
-    # cmap = 'hsv'
-    # cmap = 'hot'
-    # cmap = 'parula'
-    gray = pl.imread('../../data/images/LenaGRAY256.png')
-    print(gray.shape)
+    ::
 
-    rgb = gray2rgb(gray, cmap, [0, 1], False)  # rgb --> double, [0, 1]
-    # rgb = gray2rgb(gray, cmap, [0, 255], False)  # rgb --> double, [0., 255.]
-    # rgb = gray2rgb(gray, cmap, [0, 255], True)  # rgb --> uint8, [0, 255]
+        import pyailib as pl
+        import matplotlib.pyplot as plt
+        import numpy as np
 
-    print(gray.shape, np.min(gray), np.max(gray), gray.dtype)
-    print(rgb.shape, np.min(rgb), np.max(rgb), rgb.dtype)
+        cmap = 'jet'
+        # cmap = 'hsv'
+        # cmap = 'hot'
+        # cmap = 'parula'
+        gray = pl.imread('../../data/images/LenaGRAY256.png')
+        print(gray.shape)
 
-    plt.figure()
-    plt.subplot(121)
-    plt.imshow(gray, cmap=pl.parula if cmap == 'parula' else cmap)
-    plt.subplot(122)
-    plt.imshow(rgb)
-    plt.show()
+        rgb = gray2rgb(gray, cmap, [0, 1], False)  # rgb --> double, [0, 1]
+        # rgb = gray2rgb(gray, cmap, [0, 255], False)  # rgb --> double, [0., 255.]
+        # rgb = gray2rgb(gray, cmap, [0, 255], True)  # rgb --> uint8, [0, 255]
+
+        print(gray.shape, np.min(gray), np.max(gray), gray.dtype)
+        print(rgb.shape, np.min(rgb), np.max(rgb), rgb.dtype)
+
+        plt.figure()
+        plt.subplot(121)
+        plt.imshow(gray, cmap=pl.parula if cmap == 'parula' else cmap)
+        plt.subplot(122)
+        plt.imshow(rgb)
+        plt.show()
     """
 
     N = 256 if (drange[1] == 1) and (drange[0] == 0) else drange[1] - drange[0] + 1

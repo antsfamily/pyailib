@@ -4,7 +4,6 @@
 # @Author  : Zhi Liu (zhiliu.mind@gmail.com)
 # @Link    : http://iridescent.ink
 # @Version : $1.0$
-from __future__ import division, print_function, absolute_import
 
 import pyailib as pl
 import matplotlib.pyplot as plt
@@ -14,7 +13,7 @@ labels = ['dog', 'cat']
 scores = [0.987, None]
 edgecolors = [list(pl.DISTINCT_COLORS_RGB_NORM.values())[0], None]
 edgecolors = list(pl.DISTINCT_COLORS_RGB_NORM.values())[0:2]
-linewidths = 1
+linewidths = [2, 4]
 
 fontdict = {'family': 'Times New Roman',
             'style': 'italic',

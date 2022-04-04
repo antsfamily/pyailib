@@ -7,12 +7,11 @@ Welcome to pyailib's documentation!
 ======================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 6
    :caption: Contents:
 
-   intro
+   getstarted
    modules
-   tutorials
 
 
 Indices and tables
