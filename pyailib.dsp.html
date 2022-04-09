@@ -659,19 +659,101 @@ functions differ by one sample for odd-length <cite>x</cite>.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyailib.dsp.ffts.padfft">
-<span class="sig-prename descclassname"><span class="pre">pyailib.dsp.ffts.</span></span><span class="sig-name descname"><span class="pre">padfft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nfft</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyailib.dsp.ffts.padfft" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyailib.dsp.ffts.</span></span><span class="sig-name descname"><span class="pre">padfft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nfft</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyailib.dsp.ffts.padfft" title="Permalink to this definition">¶</a></dt>
 <dd><p>PADFT Pad array for doing FFT or IFFT</p>
 <p>PADFT Pad array for doing FFT or IFFT</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>X</strong> (<em>{numpy.ndarray}</em>) – Data to be padded.</p></li>
-<li><p><strong>Nfft</strong> (<em>{number</em><em> or </em><em>None}</em>) – Padding size.</p></li>
+<li><p><strong>X</strong> (<em>ndarray</em>) – Data to be padded.</p></li>
+<li><p><strong>nfft</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a>) – the number of fft point.</p></li>
 <li><p><strong>axis</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – Padding dimension. (the default is 0)</p></li>
 <li><p><strong>shift</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether to shift the frequency (the default is False)</p></li>
 </ul>
 </dd>
 </dl>
+</dd></dl>
+
+</section>
+<section id="module-pyailib.dsp.function_base">
+<span id="pyailib-dsp-function-base-module"></span><h2>pyailib.dsp.function_base module<a class="headerlink" href="#module-pyailib.dsp.function_base" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyailib.dsp.function_base.unwrap">
+<span class="sig-prename descclassname"><span class="pre">pyailib.dsp.function_base.</span></span><span class="sig-name descname"><span class="pre">unwrap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discont</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.141592653589793</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyailib.dsp.function_base.unwrap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unwrap by changing deltas between values to <span class="math">\(2\pi\)</span> complement.</p>
+<p>Unwrap radian phase <cite>x</cite> by changing absolute jumps greater than
+<cite>discont</cite> to their <span class="math">\(2\pi\)</span> complement along the given axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>ndarray</em>) – The input.</p></li>
+<li><p><strong>discont</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>, </em><em>optional</em>) – Maximum discontinuity between values, default is <span class="math">\(\pi\)</span>.</p></li>
+<li><p><strong>axis</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – Axis along which unwrap will operate, default is the last axis.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The unwrapped.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>x = np.array([3.14, -3.12, 3.12, 3.13, -3.11])
+y_np = unwrap(x)
+print(y_np, y_np.shape, type(y_np))
+
+# output
+
+tensor([3.1400, 3.1632, 3.1200, 3.1300, 3.1732], dtype=torch.float64) torch.Size([5]) &lt;class &#39;torch.Tensor&#39;&gt;
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyailib.dsp.function_base.unwrap2">
+<span class="sig-prename descclassname"><span class="pre">pyailib.dsp.function_base.</span></span><span class="sig-name descname"><span class="pre">unwrap2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discont</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.141592653589793</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyailib.dsp.function_base.unwrap2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unwrap by changing deltas between values to <span class="math">\(2\pi\)</span> complement.</p>
+<p>Unwrap radian phase <cite>x</cite> by changing absolute jumps greater than
+<cite>discont</cite> to their <span class="math">\(2\pi\)</span> complement along the given axis. The elements
+are divided into 2 parts (with equal length) along the given axis.
+The first part is unwrapped in inverse order, while the second part
+is unwrapped in normal order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>Tensor</em>) – The input.</p></li>
+<li><p><strong>discont</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>, </em><em>optional</em>) – Maximum discontinuity between values, default is <span class="math">\(\pi\)</span>.</p></li>
+<li><p><strong>axis</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – Axis along which unwrap will operate, default is the last axis.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>Tensor</em> – The unwrapped.</p></li>
+<li><p>see <a class="reference internal" href="#pyailib.dsp.function_base.unwrap" title="pyailib.dsp.function_base.unwrap"><code class="xref py py-func docutils literal notranslate"><span class="pre">unwrap()</span></code></a></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>x = np.array([3.14, -3.12, 3.12, 3.13, -3.11])
+y = unwrap(x)
+print(y, y.shape, type(y))
+
+print(&quot;------------------------&quot;)
+x = np.array([3.14, -3.12, 3.12, 3.13, -3.11])
+x = np.concatenate((x[::-1], x), axis=0)
+print(x)
+y = unwrap2(x)
+print(y, y.shape, type(y))
+
+# output
+[3.14       3.16318531 3.12       3.13       3.17318531] (5,) &lt;class &#39;numpy.ndarray&#39;&gt;
+------------------------
+[3.17318531 3.13       3.12       3.16318531 3.14       3.14
+3.16318531 3.12       3.13       3.17318531] (10,) &lt;class &#39;numpy.ndarray&#39;&gt;
+</pre></div>
+</div>
 </dd></dl>
 
 </section>

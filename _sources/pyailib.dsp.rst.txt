@@ -28,6 +28,14 @@ pyailib.dsp.ffts module
    :undoc-members:
    :show-inheritance:
 
+pyailib.dsp.function\_base module
+---------------------------------
+
+.. automodule:: pyailib.dsp.function_base
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 pyailib.dsp.interpolation1d module
 ----------------------------------
 
