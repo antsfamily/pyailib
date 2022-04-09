@@ -54,14 +54,10 @@ def entropy(X, caxis=None, mode='shannon', reduction='mean'):
     if X.dtype not in [np.float32, np.float64]:
         X = X.to(np.float32)
 
-    if X.ndim == 2:
-        axis = (0, 1)
-    if X.ndim == 3:
-        axis = (1, 2)
-    if X.ndim == 4:
-        axis = (1, 2, 3)
-    if X.ndim == 5:
-        axis = (1, 2, 3, 4)
+    if X.ndim <= 2:
+        axis = (X.ndim)
+    if X.ndim > 2:
+        axis = tuple(range(1, X.ndim))
 
     P = np.sum(X, axis, keepdims=True)
     p = X / (P + EPS)

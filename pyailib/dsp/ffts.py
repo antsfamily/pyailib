@@ -243,17 +243,17 @@ def ifftshift(x, axis=None):
     return x
 
 
-def padfft(X, Nfft=None, axis=0, shift=False):
+def padfft(X, nfft=None, axis=0, shift=False):
     r"""PADFT Pad array for doing FFT or IFFT
 
     PADFT Pad array for doing FFT or IFFT
 
     Parameters
     ----------
-    X : {numpy.ndarray}
+    X : ndarray
         Data to be padded.
-    Nfft : {number or None}
-        Padding size.
+    nfft : int or None
+        the number of fft point.
     axis : int, optional
         Padding dimension. (the default is 0)
     shift : bool, optional
@@ -265,11 +265,11 @@ def padfft(X, Nfft=None, axis=0, shift=False):
 
     Nx = np.size(X, axis)
 
-    if Nfft < Nx:
+    if nfft < Nx:
         raise ValueError('Output size is smaller than input size!')
 
     Nd = np.ndim(X)
-    Np = int(np.uint(Nfft - Nx))
+    Np = int(np.uint(nfft - Nx))
     PS = np.zeros((Nd, 2), dtype='int32')
     PV = [0]
     if shift:
@@ -373,7 +373,7 @@ if __name__ == "__main__":
 
     X = np.array([[1, 2, 3], [4, 5, 6]])
     print(X)
-    X = padfft(X, Nfft=8, axis=0, shift=False)
+    X = padfft(X, nfft=8, axis=0, shift=False)
     print(X)
-    X = padfft(X, Nfft=8, axis=1, shift=False)
+    X = padfft(X, nfft=8, axis=1, shift=False)
     print(X)

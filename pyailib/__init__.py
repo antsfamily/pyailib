@@ -5,7 +5,7 @@ from .version import __version__
 from .base import baseops, arrayops, mathops, randomfunc
 from .base.baseops import dreplace, dmka
 from .base.arrayops import sl, cut, cat, arraycomb
-from .base.mathops import nextpow2, prevpow2, ebeo, real2cplx, cplx2real
+from .base.mathops import nextpow2, prevpow2, ebeo, r2c, c2r
 from .base.randomfunc import setseed, randgrid, randperm, randperm2d
 
 
@@ -34,6 +34,7 @@ from .dsp.correlation import corr1, cutfftcorr1, fftcorr1
 from .dsp.normalsignals import rect, chirp
 from .dsp.interpolation1d import sinc, sinc_table, sinc_interp, interp
 from .dsp.interpolation2d import interp2d
+from .dsp.function_base import unwrap, unwrap2
 
 from .misc.transform import standardization, scale, quantization, ct2rt, rt2ct, db20
 from .misc.mapping_operation import mapping

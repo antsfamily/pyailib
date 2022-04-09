@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Date    : 2018-02-23 07:01:55
-# @Author  : Zhi Liu (zhiliu.mind@gmail.com)
+# @Author  : Yan Liu & Zhi Liu (zhiliu.mind@gmail.com)
 # @Link    : http://iridescent.ink
 # @Version : $1.0$
 
@@ -74,6 +74,7 @@ def _todict(matobj):
     A recursive function which constructs from matobjects nested dictionaries
     '''
     d = {}
+    # print(dir(matobj),  "jjjj")
     for strg in matobj._fieldnames:
         elem = matobj.__dict__[strg]
         if isinstance(elem, scio.matlab.mio5_params.mat_struct):
@@ -84,7 +85,9 @@ def _todict(matobj):
 
 
 def loadmat(filepath):
-    """load a mat file
+    """load data from an ``.mat`` file
+
+    load data from an ``.mat`` file (``'None'`` will be replaced by ``None``)
 
     see https://stackoverflow.com/questions/7008608/scipy-io-loadmat-nested-structures-i-e-dictionaries
 
@@ -96,15 +99,34 @@ def loadmat(filepath):
     """
     mdict = scio.loadmat(filepath, struct_as_record=False, squeeze_me=True)
     mdict = _check_keys(mdict)
-    mdict = dreplace(mdict, fv='None', rv=None, new=False)
+    dreplace(mdict, fv='None', rv=None, new=False)
     del mdict['__header__'], mdict['__version__'], mdict['__globals__']
+
     return mdict
 
 
 def savemat(filepath, mdict, fmt='5'):
-    mdict = dreplace(mdict, fv=None, rv='None', new=True)
+    """save data to an ``.mat`` file
 
+    save data to ``.mat`` file (``None`` will be replaced by ``'None'``)
+
+    Parameters
+    ----------
+    filepath : str
+        savefile path
+    mdict : dict
+        data in dict formation. 
+    fmt : str, optional
+        mat formation, by default '5'
+
+    Returns
+    -------
+    0
+        all is ok!
+    """
+    dreplace(mdict, fv=None, rv='None', new=False)
     scio.savemat(filepath, mdict, format=fmt)
+    dreplace(mdict, fv='None', rv=None, new=False)
 
     return 0
 
@@ -118,8 +140,6 @@ def _create_group_dataset(group, mdict):
             subgroup = group.create_group(k)
             _create_group_dataset(subgroup, v)
         else:
-            if v is None:
-                v = []
             group.create_dataset(k, data=v)
 
 
@@ -142,15 +162,17 @@ def _read_group_dataset(group, mdict, keys=None):
                 mdict[k] = group[k][()]
 
 
-def loadh5(filepath, keys=None):
+def loadh5(filename, keys=None):
     """load h5 file
 
-    load all the data from a ``.h5`` file.
+    load data from a h5 file. (``'None'`` will be replaced by ``None``)
 
     Parameters
     ----------
-    filepath : str
+    filename : str
         File's full path string.
+    keys : list
+        list of keys.
 
     Returns
     -------
@@ -159,24 +181,26 @@ def loadh5(filepath, keys=None):
 
     """
 
-    f = h5py.File(filepath, 'r')
+    f = h5py.File(filename, 'r')
     D = {}
 
     _read_group_dataset(f, D, keys)
+
+    dreplace(D, fv='None', rv=None, new=False)
 
     f.close()
     return D
 
 
-def saveh5(filepath, mdict, mode='w'):
+def saveh5(filename, mdict, mode='w'):
     """save data to h5 file
 
-    save data to ``.h5`` file
+    save data to h5 file (``None`` will be replaced by ``'None'``)
 
     Parameters
     ----------
-    filepath : str
-        filepath string
+    filename : str
+        filename string
     mdict : dict
         each dict is store in group, the elements in dict are store in dataset
     mode : str
@@ -188,16 +212,20 @@ def saveh5(filepath, mdict, mode='w'):
         0 --> all is well.
     """
 
-    f = h5py.File(filepath, mode)
+    dreplace(mdict, fv=None, rv='None', new=False)
+    f = h5py.File(filename, mode)
 
     _create_group_dataset(f, mdict)
 
     f.close()
+
+    dreplace(mdict, fv='None', rv=None, new=False)
+
     return 0
 
 
 def mvkeyh5(filepath, ksf, kst, sep='.'):
-    r"""rename keys in ``.h5`` file
+    """rename keys in ``.h5`` file
 
     Parameters
     ----------
@@ -235,15 +263,24 @@ if __name__ == '__main__':
     a = np.random.randn(3, 4)
     b = 10
     c = [1, 2, 3]
-    d = {'1': 1, '2': a}
+    d = {'d1': 1, 'd2': a}
     s = 'Hello, the future!'
     t = (0, 1)
+    n = None
 
-    saveh5('./data.h5', {'a': {'x': a}, 'b': b, 'c': c, 'd': d, 's': s})
-    data = loadh5('./data.h5', keys=['a', 's'])
+    savemat('./data.mat', {'a': {'x': a, 'y': 1}, 'b': b, 'c': c, 'd': d, 's': s, 'n': n})
+    saveh5('./data.h5', {'a': {'x': a}, 'b': b, 'c': c, 'd': d, 's': s, 'n': n})
+    data = loadh5('./data.h5', keys=['a', 'd', 's', 'n'])
+    for k, v in data.items():
+        print(k, v)
     print(data.keys())
+    print("==========1")
 
-    print("==========")
+    data = loadmat('./data.mat')
+    for k, v in data.items():
+        print(k, v)
+
+    print("==========2")
     # saveh5('./data.h5', {'t': t}, 'w')
     saveh5('./data.h5', {'t': t}, 'a')
     saveh5('./data.h5', {'t': (2, 3, 4)}, 'a')

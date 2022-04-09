@@ -7,7 +7,7 @@
 from __future__ import division, print_function, absolute_import
 
 import numpy as np
-from .arrayops import sl
+import pyailib as pl
 
 
 def nextpow2(x):
@@ -124,14 +124,15 @@ def ebeo(a, b, op='+'):
         return [op(i, j) for i, j in zip(a, b)]
 
 
-def real2cplx(X, axis=-1):
+def r2c(X, caxis=-1, keepdim=False):
     r"""convert real-valued array to complex-valued array
 
     Convert real-valued array (the size of :attr:`axis` -th dimension is 2) to complex-valued array
 
     Args:
         X (numpy array): real-valued array.
-        axis (int, optional): the complex axis. Defaults to -1.
+        caxis (int, optional): the complex axis. Defaults to -1.
+        keepdim (bool, optional): keepdim? default is False.
 
     Returns:
         numpy array: complex-valued array
@@ -145,8 +146,8 @@ def real2cplx(X, axis=-1):
             np.random.seed(2020)
 
             Xreal = np.random.randint(0, 30, (3, 2, 4))
-            Xcplx = real2cplx(Xreal, axis=1)
-            Yreal = cplx2real(Xcplx, axis=0)
+            Xcplx = r2c(Xreal, caxis=1)
+            Yreal = c2r(Xcplx, caxis=0, keepdim=True)
 
             print(Xreal, Xreal.shape, 'Xreal')
             print(Xcplx, Xcplx.shape, 'Xcplx')
@@ -185,18 +186,22 @@ def real2cplx(X, axis=-1):
             0.0 0.0, Error
     """
 
-    idxreal = sl(np.ndim(X), axis=axis, idx=[[0]])
-    idximag = sl(np.ndim(X), axis=axis, idx=[[1]])
+    if keepdim:
+        idxreal = pl.sl(np.ndim(X), axis=caxis, idx=[[0]])
+        idximag = pl.sl(np.ndim(X), axis=caxis, idx=[[1]])
+    else:
+        idxreal = pl.sl(np.ndim(X), axis=caxis, idx=[0])
+        idximag = pl.sl(np.ndim(X), axis=caxis, idx=[1])
 
     return X[idxreal] + 1j * X[idximag]
 
 
-def cplx2real(X, axis=-1):
+def c2r(X, caxis=-1):
     r"""convert complex-valued array to real-valued array
 
     Args:
         X (numpy array): complex-valued array
-        axis (int, optional): complex axis for real-valued array. Defaults to -1.
+        caxis (int, optional): complex axis for real-valued array. Defaults to -1.
 
     Returns:
         numpy array: real-valued array
@@ -210,8 +215,8 @@ def cplx2real(X, axis=-1):
             np.random.seed(2020)
 
             Xreal = np.random.randint(0, 30, (3, 2, 4))
-            Xcplx = real2cplx(Xreal, axis=1)
-            Yreal = cplx2real(Xcplx, axis=0)
+            Xcplx = r2c(Xreal, caxis=1)
+            Yreal = c2r(Xcplx, caxis=0, keepdim=True)
 
             print(Xreal, Xreal.shape, 'Xreal')
             print(Xcplx, Xcplx.shape, 'Xcplx')
@@ -250,7 +255,7 @@ def cplx2real(X, axis=-1):
             0.0 0.0, Error
     """
 
-    return np.stack((X.real, X.imag), axis=axis)
+    return np.stack((X.real, X.imag), axis=caxis)
 
 
 if __name__ == '__main__':
@@ -260,8 +265,8 @@ if __name__ == '__main__':
     np.random.seed(2020)
 
     Xreal = np.random.randint(0, 30, (3, 2, 4))
-    Xcplx = real2cplx(Xreal, axis=1)
-    Yreal = cplx2real(Xcplx, axis=0)
+    Xcplx = r2c(Xreal, caxis=1, keepdim=True)
+    Yreal = c2r(Xcplx, caxis=0)
 
     print(Xreal, Xreal.shape, 'Xreal')
     print(Xcplx, Xcplx.shape, 'Xcplx')
