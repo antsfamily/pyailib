@@ -74,7 +74,6 @@ def _todict(matobj):
     A recursive function which constructs from matobjects nested dictionaries
     '''
     d = {}
-    # print(dir(matobj),  "jjjj")
     for strg in matobj._fieldnames:
         elem = matobj.__dict__[strg]
         if isinstance(elem, scio.matlab.mio5_params.mat_struct):

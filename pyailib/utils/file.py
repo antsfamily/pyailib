@@ -166,9 +166,7 @@ def readnum(filepath, pmain='Train', psub='loss', vfn=float, nshots=None):
             if datastr == '':
                 break
             if posmain > -1:
-                # print(datastr, posmain)
-                aa = re.findall(psub + r'-?\d+\.?\d*e*E?-?\d*', datastr)
-                # aa = re.findall(psub + r'\d\.?\d*', datastr))
+                aa = re.findall(psub + r'-?\d+\.?\d*e*E?[-+]?\d*', datastr)
                 if aa != []:
                     v.append(vfn(aa[0][len(psub):]))
                     cnt += 1
@@ -228,7 +226,11 @@ if __name__ == '__main__':
     filepath = pathjoin('a', 'b', 'c', '.d')
     print(filepath)
 
-    filepath = '../../data/files/log.log'
+    filepath = 'data/files/log.log'
 
     v = readnum(filepath, pmain='Train', psub='loss: ', vfn=float, nshots=10)
     print(v)
+
+    print('===================')
+    datastr = ' 1  1.3e-02  3.4e+03fd7.6lo6.'
+    print(re.findall(r'-?\d+\.?\d*e*E?[-+]?\d*', datastr))
