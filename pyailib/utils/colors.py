@@ -105,7 +105,7 @@ def gray2rgb(gray, cmap, drange=[0, 255], fmtstr=False):
     ----------
     gray : numpy array
         The gray image.
-    cmap : str
+    cmap : str or colormap
         colormap string
     drange : list or tuple
         The low and high value, default is ``[0, 255]``
@@ -150,7 +150,7 @@ def gray2rgb(gray, cmap, drange=[0, 255], fmtstr=False):
         colormap = cmaps['parula']
         N = 64
     else:
-        colormap = cm.get_cmap(cmap, N)
+        colormap = cm.get_cmap(cmap, N) if type(cmap) is str else cmap
     gray = scale(gray, st=[0, N], sf=None, istrunc=True, extra=False).astype('int')
     rgb = colormap(gray)[:, :, :3]
 

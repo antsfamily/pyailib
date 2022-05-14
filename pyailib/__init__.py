@@ -12,10 +12,10 @@ from .base.randomfunc import setseed, randgrid, randperm, randperm2d
 from .utils.const import *
 from .utils.colors import rgb2gray, gray2rgb, DISTINCT_COLORS_HEX, DISTINCT_COLORS_RGB, DISTINCT_COLORS_CMYK, DISTINCT_COLORS_RGB_NORM, BASE_COLORS, TABLEAU_COLORS, CSS4_COLORS
 from .utils.colormaps import cmaps, viridis, parula
-from .utils.convert import str2list, str2num
+from .utils.convert import str2list, str2num, str2sec
 from .utils.ios import loadyaml, loadjson, loadmat, savemat, loadh5, saveh5, mvkeyh5
 from .utils.image import imread, imsave, histeq, imresize
-from .utils.file import listxfile, pathjoin, fileparts, readtxt, readnum, readcsv
+from .utils.file import listxfile, pathjoin, fileparts, readtxt, readnum, readcsv, readsec
 from .utils.plot_show import cplot, plots, Plots
 from .utils.typevalue import bin2int, peakvalue
 

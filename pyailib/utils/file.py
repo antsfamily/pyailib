@@ -9,6 +9,7 @@
 from __future__ import division, print_function, absolute_import
 import os
 import re
+from .convert import str2sec
 
 
 def listxfile(listdir=None, exts=None, recursive=False, filelist=[]):
@@ -134,7 +135,7 @@ def readtxt(filepath, mode=None):
     return data
 
 
-def readnum(filepath, pmain='Train', psub='loss', vfn=float, nshots=None):
+def readnum(filepath, pmain='Train', psub='loss: ', vfn=float, nshots=None):
     """Read a file and extract numbers in it.
 
     Parameters
@@ -218,6 +219,49 @@ def readcsv(filepath, sep=None, vfn=None, nlines=None):
     return numbers
 
 
+def readsec(filepath, pmain='Train', psub='time: ', vfn=int, nshots=None):
+    """Read a file and extract seconds in it.
+
+        ``hh:mm:ss``  -->  ``hh*3600 + mm*60 + ss``
+
+    Parameters
+    ----------
+    filepath : str
+        The path string of the file.
+    pmain : str, optional
+        The matching pattern string, such as '--->Train'.
+    psub : str, optional
+        The sub-matching pattern string, such as 'loss'.
+    vfn : function or None, optional
+        The function for formating the numbers. ``float`` --> convert to float number; ``int`` --> convert to integer number.
+    nshots : None, optional
+        The number of shots of sub-matching pattern.
+
+    Returns
+    -------
+    list
+        The list of seconds.
+    """
+    if nshots is None:
+        nshots = float('Inf')
+    v = []
+    cnt = 1
+    with open(filepath, 'r') as f:
+        while True:
+            datastr = f.readline()
+            posmain = datastr.find(pmain)
+            if datastr == '':
+                break
+            if posmain > -1:
+                aa = re.findall(psub + r'\d+:\d+:\d+', datastr)
+                if aa != []:
+                    v.append(vfn(str2sec(aa[0][len(psub):])))
+                    cnt += 1
+            if cnt > nshots:
+                break
+    return v
+
+
 if __name__ == '__main__':
 
     files = listxfile(listdir='/home/liu/', exts=None, recursive=False, filelist=[])
@@ -226,7 +270,7 @@ if __name__ == '__main__':
     filepath = pathjoin('a', 'b', 'c', '.d')
     print(filepath)
 
-    filepath = 'data/files/log.log'
+    filepath = 'data/files/log/log.log'
 
     v = readnum(filepath, pmain='Train', psub='loss: ', vfn=float, nshots=10)
     print(v)
