@@ -203,7 +203,7 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>gray</strong> (<em>numpy array</em>) – The gray image.</p></li>
-<li><p><strong>cmap</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – colormap string</p></li>
+<li><p><strong>cmap</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em> or </em><em>colormap</em>) – colormap string</p></li>
 <li><p><strong>drange</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a>) – The low and high value, default is <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">255]</span></code></p></li>
 <li><p><strong>fmtstr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Specifies the format (<code class="docutils literal notranslate"><span class="pre">'int'</span></code>, <code class="docutils literal notranslate"><span class="pre">'uint8'</span></code>, <code class="docutils literal notranslate"><span class="pre">'uint16'</span></code>, <code class="docutils literal notranslate"><span class="pre">'uint32'</span></code>, <code class="docutils literal notranslate"><span class="pre">'float16'</span></code>,
 <code class="docutils literal notranslate"><span class="pre">'float32'</span></code>, , <code class="docutils literal notranslate"><span class="pre">'float64'</span></code>) for the output rgb matrix. (default is <code class="docutils literal notranslate"><span class="pre">False</span></code>, don’t change)</p></li>
@@ -298,6 +298,29 @@ supported are: <code class="docutils literal notranslate"><span class="pre">'par
 </dl>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="pyailib.utils.convert.str2sec">
+<span class="sig-prename descclassname"><span class="pre">pyailib.utils.convert.</span></span><span class="sig-name descname"><span class="pre">str2sec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">':'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyailib.utils.convert.str2sec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts second in a time string.</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">hh:mm:ss</span></code>  –&gt;  <code class="docutils literal notranslate"><span class="pre">hh*3600</span> <span class="pre">+</span> <span class="pre">mm*60</span> <span class="pre">+</span> <span class="pre">ss</span></code></p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The string or string list/tuple.</p></li>
+<li><p><strong>sep</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The separator between hour, minute and seconds, default is <code class="docutils literal notranslate"><span class="pre">':'</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>y</strong> – The seconds.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="module-pyailib.utils.file">
 <span id="pyailib-utils-file-module"></span><h2>pyailib.utils.file module<a class="headerlink" href="#module-pyailib.utils.file" title="Permalink to this headline">¶</a></h2>
@@ -387,7 +410,7 @@ The default is None, which means any extension.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyailib.utils.file.readnum">
-<span class="sig-prename descclassname"><span class="pre">pyailib.utils.file.</span></span><span class="sig-name descname"><span class="pre">readnum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">filepath</span></em>, <em class="sig-param"><span class="pre">pmain='Train'</span></em>, <em class="sig-param"><span class="pre">psub='loss'</span></em>, <em class="sig-param"><span class="pre">vfn=&lt;class</span> <span class="pre">'float'&gt;</span></em>, <em class="sig-param"><span class="pre">nshots=None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyailib.utils.file.readnum" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyailib.utils.file.</span></span><span class="sig-name descname"><span class="pre">readnum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">filepath</span></em>, <em class="sig-param"><span class="pre">pmain='Train'</span></em>, <em class="sig-param"><span class="pre">psub='loss:</span> <span class="pre">'</span></em>, <em class="sig-param"><span class="pre">vfn=&lt;class</span> <span class="pre">'float'&gt;</span></em>, <em class="sig-param"><span class="pre">nshots=None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyailib.utils.file.readnum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read a file and extract numbers in it.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -401,6 +424,32 @@ The default is None, which means any extension.</p></li>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The list of numbers.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyailib.utils.file.readsec">
+<span class="sig-prename descclassname"><span class="pre">pyailib.utils.file.</span></span><span class="sig-name descname"><span class="pre">readsec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">filepath</span></em>, <em class="sig-param"><span class="pre">pmain='Train'</span></em>, <em class="sig-param"><span class="pre">psub='time:</span> <span class="pre">'</span></em>, <em class="sig-param"><span class="pre">vfn=&lt;class</span> <span class="pre">'int'&gt;</span></em>, <em class="sig-param"><span class="pre">nshots=None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyailib.utils.file.readsec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a file and extract seconds in it.</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">hh:mm:ss</span></code>  –&gt;  <code class="docutils literal notranslate"><span class="pre">hh*3600</span> <span class="pre">+</span> <span class="pre">mm*60</span> <span class="pre">+</span> <span class="pre">ss</span></code></p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The path string of the file.</p></li>
+<li><p><strong>pmain</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – The matching pattern string, such as ‘—&gt;Train’.</p></li>
+<li><p><strong>psub</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – The sub-matching pattern string, such as ‘loss’.</p></li>
+<li><p><strong>vfn</strong> (<em>function</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a><em>, </em><em>optional</em>) – The function for formating the numbers. <code class="docutils literal notranslate"><span class="pre">float</span></code> –&gt; convert to float number; <code class="docutils literal notranslate"><span class="pre">int</span></code> –&gt; convert to integer number.</p></li>
+<li><p><strong>nshots</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a><em>, </em><em>optional</em>) – The number of shots of sub-matching pattern.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The list of seconds.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)">list</a></p>
