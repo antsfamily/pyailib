@@ -1,0 +1,26 @@
+AdamW (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    eps: 1e-08
+    lr: 0.001
+    weight_decay: 0.01
+)
+--->Train epoch: 1, loss: 9.9753, entropy: 9.9753, l1norm: 9.8472, contrast: 0.8416, time: 23.318446397781372s
+--->Valid epoch: 1, loss: 10.0244, entropy: 10.0244, l1norm: 9.7120, contrast: 0.8258, time: 8.743143558502197s
+--->Test epoch: 1, loss: 10.0457, entropy: 10.0457, l1norm: 9.8616, contrast: 0.8062, time: 8.710345268249512s
+--->Train epoch: 2, loss: 9.9752, entropy: 9.9752, l1norm: 9.8473, contrast: 0.8416, time: 24.611767053604126s
+--->Valid epoch: 2, loss: 10.0244, entropy: 10.0244, l1norm: 9.7120, contrast: 0.8258, time: 8.92019534111023s
+--->Test epoch: 2, loss: 10.0457, entropy: 10.0457, l1norm: 9.8616, contrast: 0.8062, time: 8.985547065734863s
+--->Train epoch: 3, loss: 9.9751, entropy: 9.9751, l1norm: 9.8470, contrast: 0.8416, time: 24.705666303634644s
+--->Valid epoch: 3, loss: 10.0244, entropy: 10.0244, l1norm: 9.7120, contrast: 0.8258, time: 8.949479103088379s
+--->Test epoch: 3, loss: 10.0456, entropy: 10.0456, l1norm: 9.8616, contrast: 0.8063, time: 9.064453601837158s
+--->Train epoch: 4, loss: 9.9751, entropy: 9.9751, l1norm: 9.8468, contrast: 0.8416, time: 25.056453466415405s
+--->Valid epoch: 4, loss: 10.0243, entropy: 10.0243, l1norm: 9.7120, contrast: 0.8258, time: 9.003432989120483s
+--->Test epoch: 4, loss: 10.0455, entropy: 10.0455, l1norm: 9.8615, contrast: 0.8063, time: 9.130839586257935s
+--->Train epoch: 5, loss: 9.9749, entropy: 9.9749, l1norm: 9.8468, contrast: 0.8417, time: 24.690696239471436s
+--->Valid epoch: 5, loss: 10.0242, entropy: 10.0242, l1norm: 9.7120, contrast: 0.8259, time: 9.158972978591919s
+--->Test epoch: 5, loss: 10.0453, entropy: 10.0453, l1norm: 9.8615, contrast: 0.8064, time: 9.077603578567505s
+--->Train epoch: 6, loss: 9.9747, entropy: 9.9747, l1norm: 9.8470, contrast: 0.8417, time: 24.856386184692383s
+--->Valid epoch: 6, loss: 10.0240, entropy: 10.0240, l1norm: 9.7120, contrast: 0.8259, time: 9.005512475967407s
+--->Test epoch: 6, loss: 10.0450, entropy: 10.0450, l1norm: 9.8615, contrast: 0.8065, time: 9.424266338348389s

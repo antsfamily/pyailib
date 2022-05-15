@@ -1,0 +1,201 @@
+--->Train, epoch: 1, loss: 151.1385, time: 114.51
+--->Valid, epoch: 1, loss: 5.4590, accuracy: 98.2400, time: 21.42
+--->Train, epoch: 2, loss: 49.6896, time: 3.54
+--->Valid, epoch: 2, loss: 4.7022, accuracy: 98.5700, time: 0.10
+--->Train, epoch: 3, loss: 35.7101, time: 3.29
+--->Valid, epoch: 3, loss: 3.2324, accuracy: 99.0000, time: 0.11
+--->Train, epoch: 4, loss: 28.0353, time: 3.16
+--->Valid, epoch: 4, loss: 3.0963, accuracy: 98.9400, time: 0.11
+--->Train, epoch: 5, loss: 24.2111, time: 3.14
+--->Valid, epoch: 5, loss: 2.5056, accuracy: 99.2100, time: 0.11
+--->Train, epoch: 6, loss: 20.1340, time: 3.15
+--->Valid, epoch: 6, loss: 2.7097, accuracy: 99.1600, time: 0.11
+--->Train, epoch: 7, loss: 15.0428, time: 3.15
+--->Valid, epoch: 7, loss: 3.7755, accuracy: 98.8800, time: 0.11
+--->Train, epoch: 8, loss: 15.7284, time: 3.18
+--->Valid, epoch: 8, loss: 3.4605, accuracy: 99.0700, time: 0.11
+--->Train, epoch: 9, loss: 12.3837, time: 3.16
+--->Valid, epoch: 9, loss: 4.0352, accuracy: 99.1300, time: 0.11
+--->Train, epoch: 10, loss: 12.7353, time: 3.16
+--->Valid, epoch: 10, loss: 4.2519, accuracy: 98.9600, time: 0.11
+--->Train, epoch: 11, loss: 10.0208, time: 3.38
+--->Valid, epoch: 11, loss: 3.9929, accuracy: 99.0700, time: 0.10
+--->Train, epoch: 12, loss: 10.3180, time: 3.26
+--->Valid, epoch: 12, loss: 4.0255, accuracy: 98.9700, time: 0.10
+--->Train, epoch: 13, loss: 9.1296, time: 3.27
+--->Valid, epoch: 13, loss: 3.3821, accuracy: 99.2100, time: 0.10
+--->Train, epoch: 14, loss: 9.7504, time: 3.28
+--->Valid, epoch: 14, loss: 4.4940, accuracy: 99.0600, time: 0.10
+--->Train, epoch: 15, loss: 6.2041, time: 3.30
+--->Valid, epoch: 15, loss: 3.9199, accuracy: 99.2100, time: 0.10
+--->Train, epoch: 16, loss: 8.7537, time: 3.30
+--->Valid, epoch: 16, loss: 3.5941, accuracy: 99.2900, time: 0.10
+--->Train, epoch: 17, loss: 7.3493, time: 3.31
+--->Valid, epoch: 17, loss: 3.8360, accuracy: 99.1300, time: 0.10
+--->Train, epoch: 18, loss: 7.5728, time: 3.31
+--->Valid, epoch: 18, loss: 4.3573, accuracy: 99.1500, time: 0.10
+--->Train, epoch: 19, loss: 6.3071, time: 3.31
+--->Valid, epoch: 19, loss: 3.3720, accuracy: 99.3200, time: 0.10
+--->Train, epoch: 20, loss: 5.8688, time: 3.32
+--->Valid, epoch: 20, loss: 4.5405, accuracy: 99.1400, time: 0.10
+--->Train, epoch: 21, loss: 8.0889, time: 3.32
+--->Valid, epoch: 21, loss: 5.5627, accuracy: 99.0700, time: 0.10
+--->Train, epoch: 22, loss: 4.2332, time: 3.32
+--->Valid, epoch: 22, loss: 5.1058, accuracy: 99.0600, time: 0.10
+--->Train, epoch: 23, loss: 6.1874, time: 3.32
+--->Valid, epoch: 23, loss: 5.4347, accuracy: 99.0000, time: 0.10
+--->Train, epoch: 24, loss: 7.7892, time: 3.32
+--->Valid, epoch: 24, loss: 5.0344, accuracy: 99.1700, time: 0.10
+--->Train, epoch: 25, loss: 4.7826, time: 3.32
+--->Valid, epoch: 25, loss: 3.5473, accuracy: 99.4000, time: 0.11
+--->Train, epoch: 26, loss: 3.2317, time: 3.07
+--->Valid, epoch: 26, loss: 6.2466, accuracy: 98.9600, time: 0.19
+--->Train, epoch: 27, loss: 8.6186, time: 3.06
+--->Valid, epoch: 27, loss: 4.9148, accuracy: 99.2200, time: 0.19
+--->Train, epoch: 28, loss: 5.3926, time: 3.07
+--->Valid, epoch: 28, loss: 4.4964, accuracy: 99.2000, time: 0.19
+--->Train, epoch: 29, loss: 4.8765, time: 3.08
+--->Valid, epoch: 29, loss: 6.6528, accuracy: 98.8800, time: 0.19
+--->Train, epoch: 30, loss: 7.7004, time: 3.05
+--->Valid, epoch: 30, loss: 5.6243, accuracy: 99.1700, time: 0.19
+--->Train, epoch: 31, loss: 6.5283, time: 3.07
+--->Valid, epoch: 31, loss: 5.5640, accuracy: 99.2600, time: 0.19
+--->Train, epoch: 32, loss: 6.5452, time: 3.06
+--->Valid, epoch: 32, loss: 5.7211, accuracy: 99.1200, time: 0.20
+--->Train, epoch: 33, loss: 4.5473, time: 3.05
+--->Valid, epoch: 33, loss: 5.0221, accuracy: 99.2300, time: 0.20
+--->Train, epoch: 34, loss: 3.9170, time: 3.08
+--->Valid, epoch: 34, loss: 6.3892, accuracy: 99.1000, time: 0.20
+--->Train, epoch: 35, loss: 6.5118, time: 3.11
+--->Valid, epoch: 35, loss: 6.5134, accuracy: 99.1700, time: 0.19
+--->Train, epoch: 36, loss: 8.0103, time: 3.05
+--->Valid, epoch: 36, loss: 6.7326, accuracy: 99.0100, time: 0.19
+--->Train, epoch: 37, loss: 4.4619, time: 3.09
+--->Valid, epoch: 37, loss: 4.3465, accuracy: 99.3400, time: 0.20
+--->Train, epoch: 38, loss: 2.3595, time: 3.05
+--->Valid, epoch: 38, loss: 6.4351, accuracy: 99.0800, time: 0.19
+--->Train, epoch: 39, loss: 4.5934, time: 3.07
+--->Valid, epoch: 39, loss: 5.9288, accuracy: 99.1400, time: 0.20
+--->Train, epoch: 40, loss: 5.0402, time: 3.07
+--->Valid, epoch: 40, loss: 7.2483, accuracy: 99.0000, time: 0.19
+--->Train, epoch: 41, loss: 5.0493, time: 3.07
+--->Valid, epoch: 41, loss: 7.0418, accuracy: 99.0200, time: 0.21
+--->Train, epoch: 42, loss: 3.2057, time: 3.08
+--->Valid, epoch: 42, loss: 5.5100, accuracy: 99.2400, time: 0.21
+--->Train, epoch: 43, loss: 3.1346, time: 3.06
+--->Valid, epoch: 43, loss: 5.7212, accuracy: 99.2200, time: 0.19
+--->Train, epoch: 44, loss: 8.3322, time: 3.06
+--->Valid, epoch: 44, loss: 4.9295, accuracy: 99.2000, time: 0.19
+--->Train, epoch: 45, loss: 2.1196, time: 3.08
+--->Valid, epoch: 45, loss: 7.0159, accuracy: 99.0800, time: 0.20
+--->Train, epoch: 46, loss: 7.2374, time: 3.09
+--->Valid, epoch: 46, loss: 6.4658, accuracy: 99.1100, time: 0.19
+--->Train, epoch: 47, loss: 3.5427, time: 3.09
+--->Valid, epoch: 47, loss: 6.6753, accuracy: 99.2400, time: 0.11
+--->Train, epoch: 48, loss: 5.7825, time: 3.13
+--->Valid, epoch: 48, loss: 5.4872, accuracy: 99.2400, time: 0.11
+--->Train, epoch: 49, loss: 5.0367, time: 3.14
+--->Valid, epoch: 49, loss: 5.3630, accuracy: 99.2300, time: 0.11
+--->Train, epoch: 50, loss: 4.5592, time: 3.13
+--->Valid, epoch: 50, loss: 5.9514, accuracy: 99.1800, time: 0.12
+--->Train, epoch: 51, loss: 3.4384, time: 3.15
+--->Valid, epoch: 51, loss: 6.5060, accuracy: 99.1700, time: 0.14
+--->Train, epoch: 52, loss: 5.0419, time: 3.18
+--->Valid, epoch: 52, loss: 7.0984, accuracy: 99.1400, time: 0.11
+--->Train, epoch: 53, loss: 7.4995, time: 3.11
+--->Valid, epoch: 53, loss: 7.2126, accuracy: 99.1300, time: 0.13
+--->Train, epoch: 54, loss: 2.3954, time: 3.45
+--->Valid, epoch: 54, loss: 5.7949, accuracy: 99.2800, time: 0.10
+--->Train, epoch: 55, loss: 4.2786, time: 3.33
+--->Valid, epoch: 55, loss: 6.8755, accuracy: 99.1600, time: 0.10
+--->Train, epoch: 56, loss: 6.4751, time: 3.33
+--->Valid, epoch: 56, loss: 5.9586, accuracy: 99.2300, time: 0.10
+--->Train, epoch: 57, loss: 5.8962, time: 3.36
+--->Valid, epoch: 57, loss: 6.8178, accuracy: 99.1800, time: 0.10
+--->Train, epoch: 58, loss: 3.3561, time: 3.39
+--->Valid, epoch: 58, loss: 6.2188, accuracy: 99.1400, time: 0.11
+--->Train, epoch: 59, loss: 7.5485, time: 3.39
+--->Valid, epoch: 59, loss: 8.0356, accuracy: 99.1400, time: 0.10
+--->Train, epoch: 60, loss: 5.2439, time: 3.37
+--->Valid, epoch: 60, loss: 7.1441, accuracy: 99.1600, time: 0.10
+--->Train, epoch: 61, loss: 2.7108, time: 3.36
+--->Valid, epoch: 61, loss: 6.4825, accuracy: 99.2700, time: 0.12
+--->Train, epoch: 62, loss: 1.5845, time: 3.36
+--->Valid, epoch: 62, loss: 7.2527, accuracy: 99.2600, time: 0.12
+--->Train, epoch: 63, loss: 6.8959, time: 3.35
+--->Valid, epoch: 63, loss: 6.8567, accuracy: 99.2300, time: 0.10
+--->Train, epoch: 64, loss: 3.5395, time: 3.35
+--->Valid, epoch: 64, loss: 7.6873, accuracy: 99.1800, time: 0.10
+--->Train, epoch: 65, loss: 5.9909, time: 3.37
+--->Valid, epoch: 65, loss: 10.2131, accuracy: 98.9200, time: 0.12
+--->Train, epoch: 66, loss: 8.1716, time: 3.36
+--->Valid, epoch: 66, loss: 9.3075, accuracy: 99.0700, time: 0.12
+--->Train, epoch: 67, loss: 2.7672, time: 3.38
+--->Valid, epoch: 67, loss: 8.3956, accuracy: 99.1200, time: 0.10
+--->Train, epoch: 68, loss: 6.5846, time: 3.35
+--->Valid, epoch: 68, loss: 8.3062, accuracy: 99.1700, time: 0.13
+--->Train, epoch: 69, loss: 4.3346, time: 3.36
+--->Valid, epoch: 69, loss: 7.5004, accuracy: 99.1400, time: 0.12
+--->Train, epoch: 70, loss: 3.6212, time: 3.36
+--->Valid, epoch: 70, loss: 7.6233, accuracy: 99.2200, time: 0.10
+--->Train, epoch: 71, loss: 3.9130, time: 3.36
+--->Valid, epoch: 71, loss: 6.9566, accuracy: 99.2400, time: 0.10
+--->Train, epoch: 72, loss: 7.8544, time: 3.36
+--->Valid, epoch: 72, loss: 7.5971, accuracy: 99.2500, time: 0.10
+--->Train, epoch: 73, loss: 2.9008, time: 3.36
+--->Valid, epoch: 73, loss: 6.6373, accuracy: 99.2700, time: 0.10
+--->Train, epoch: 74, loss: 4.9683, time: 3.36
+--->Valid, epoch: 74, loss: 7.4124, accuracy: 99.1600, time: 0.13
+--->Train, epoch: 75, loss: 2.8779, time: 3.40
+--->Valid, epoch: 75, loss: 6.1295, accuracy: 99.2800, time: 0.10
+--->Train, epoch: 76, loss: 6.7049, time: 3.38
+--->Valid, epoch: 76, loss: 9.4321, accuracy: 99.1300, time: 0.10
+--->Train, epoch: 77, loss: 5.2975, time: 3.37
+--->Valid, epoch: 77, loss: 7.6551, accuracy: 99.2100, time: 0.10
+--->Train, epoch: 78, loss: 7.6186, time: 3.37
+--->Valid, epoch: 78, loss: 7.5206, accuracy: 99.2600, time: 0.10
+--->Train, epoch: 79, loss: 7.2762, time: 3.37
+--->Valid, epoch: 79, loss: 7.5754, accuracy: 99.2300, time: 0.10
+--->Train, epoch: 80, loss: 3.2123, time: 3.39
+--->Valid, epoch: 80, loss: 10.0923, accuracy: 99.1000, time: 0.11
+--->Train, epoch: 81, loss: 8.4479, time: 3.40
+--->Valid, epoch: 81, loss: 10.0201, accuracy: 99.1400, time: 0.10
+--->Train, epoch: 82, loss: 9.0596, time: 3.37
+--->Valid, epoch: 82, loss: 7.7260, accuracy: 99.2100, time: 0.10
+--->Train, epoch: 83, loss: 6.3167, time: 3.40
+--->Valid, epoch: 83, loss: 8.1040, accuracy: 99.2100, time: 0.10
+--->Train, epoch: 84, loss: 5.6371, time: 3.39
+--->Valid, epoch: 84, loss: 8.5461, accuracy: 99.1800, time: 0.10
+--->Train, epoch: 85, loss: 6.9382, time: 3.40
+--->Valid, epoch: 85, loss: 8.7610, accuracy: 99.2300, time: 0.11
+--->Train, epoch: 86, loss: 5.0668, time: 3.41
+--->Valid, epoch: 86, loss: 7.6726, accuracy: 99.1900, time: 0.11
+--->Train, epoch: 87, loss: 5.1812, time: 3.39
+--->Valid, epoch: 87, loss: 9.1490, accuracy: 99.1600, time: 0.10
+--->Train, epoch: 88, loss: 6.8519, time: 3.39
+--->Valid, epoch: 88, loss: 10.2008, accuracy: 99.0500, time: 0.11
+--->Train, epoch: 89, loss: 4.3561, time: 3.37
+--->Valid, epoch: 89, loss: 7.5309, accuracy: 99.2800, time: 0.11
+--->Train, epoch: 90, loss: 6.0448, time: 3.39
+--->Valid, epoch: 90, loss: 8.9344, accuracy: 99.1800, time: 0.10
+--->Train, epoch: 91, loss: 4.0877, time: 3.39
+--->Valid, epoch: 91, loss: 7.1209, accuracy: 99.3400, time: 0.10
+--->Train, epoch: 92, loss: 5.5298, time: 3.38
+--->Valid, epoch: 92, loss: 9.5357, accuracy: 99.1400, time: 0.10
+--->Train, epoch: 93, loss: 8.3034, time: 3.42
+--->Valid, epoch: 93, loss: 7.3910, accuracy: 99.3000, time: 0.11
+--->Train, epoch: 94, loss: 3.5302, time: 3.41
+--->Valid, epoch: 94, loss: 8.0717, accuracy: 99.2700, time: 0.10
+--->Train, epoch: 95, loss: 5.4112, time: 3.41
+--->Valid, epoch: 95, loss: 10.0387, accuracy: 99.1200, time: 0.10
+--->Train, epoch: 96, loss: 9.2984, time: 3.40
+--->Valid, epoch: 96, loss: 8.6929, accuracy: 99.1800, time: 0.12
+--->Train, epoch: 97, loss: 6.7133, time: 3.42
+--->Valid, epoch: 97, loss: 9.7495, accuracy: 99.2000, time: 0.10
+--->Train, epoch: 98, loss: 4.2410, time: 3.41
+--->Valid, epoch: 98, loss: 8.8181, accuracy: 99.2600, time: 0.10
+--->Train, epoch: 99, loss: 9.9831, time: 3.41
+--->Valid, epoch: 99, loss: 9.2890, accuracy: 99.2100, time: 0.10
+--->Train, epoch: 100, loss: 12.3688, time: 3.41
+--->Valid, epoch: 100, loss: 10.8213, accuracy: 99.0800, time: 0.10
+--->Total time: 472.78, training time: 438.41, validation time: 33.96

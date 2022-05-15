@@ -1,0 +1,201 @@
+--->Train epoch 0, loss: 0.0029, time: 47.59
+--->Valid epoch 0, loss: 0.0160, accuracy: 0.8669, time: 2.71
+--->Train epoch 1, loss: 0.0026, time: 45.91
+--->Valid epoch 1, loss: 0.0158, accuracy: 0.8837, time: 2.66
+--->Train epoch 2, loss: 0.0025, time: 44.87
+--->Valid epoch 2, loss: 0.0148, accuracy: 0.9837, time: 2.66
+--->Train epoch 3, loss: 0.0025, time: 44.76
+--->Valid epoch 3, loss: 0.0148, accuracy: 0.9845, time: 2.50
+--->Train epoch 4, loss: 0.0025, time: 44.88
+--->Valid epoch 4, loss: 0.0148, accuracy: 0.9833, time: 2.47
+--->Train epoch 5, loss: 0.0025, time: 45.72
+--->Valid epoch 5, loss: 0.0147, accuracy: 0.9877, time: 2.45
+--->Train epoch 6, loss: 0.0025, time: 45.07
+--->Valid epoch 6, loss: 0.0147, accuracy: 0.9889, time: 2.64
+--->Train epoch 7, loss: 0.0025, time: 45.57
+--->Valid epoch 7, loss: 0.0147, accuracy: 0.9890, time: 2.48
+--->Train epoch 8, loss: 0.0025, time: 45.57
+--->Valid epoch 8, loss: 0.0147, accuracy: 0.9899, time: 2.49
+--->Train epoch 9, loss: 0.0025, time: 45.78
+--->Valid epoch 9, loss: 0.0147, accuracy: 0.9892, time: 2.49
+--->Train epoch 10, loss: 0.0024, time: 45.80
+--->Valid epoch 10, loss: 0.0147, accuracy: 0.9917, time: 2.49
+--->Train epoch 11, loss: 0.0024, time: 45.89
+--->Valid epoch 11, loss: 0.0147, accuracy: 0.9898, time: 2.49
+--->Train epoch 12, loss: 0.0024, time: 45.61
+--->Valid epoch 12, loss: 0.0147, accuracy: 0.9914, time: 2.66
+--->Train epoch 13, loss: 0.0024, time: 44.94
+--->Valid epoch 13, loss: 0.0147, accuracy: 0.9901, time: 2.54
+--->Train epoch 14, loss: 0.0024, time: 43.75
+--->Valid epoch 14, loss: 0.0147, accuracy: 0.9904, time: 2.41
+--->Train epoch 15, loss: 0.0024, time: 45.63
+--->Valid epoch 15, loss: 0.0147, accuracy: 0.9919, time: 2.68
+--->Train epoch 16, loss: 0.0024, time: 45.70
+--->Valid epoch 16, loss: 0.0147, accuracy: 0.9915, time: 2.50
+--->Train epoch 17, loss: 0.0024, time: 45.56
+--->Valid epoch 17, loss: 0.0147, accuracy: 0.9899, time: 2.67
+--->Train epoch 18, loss: 0.0024, time: 44.98
+--->Valid epoch 18, loss: 0.0147, accuracy: 0.9921, time: 2.56
+--->Train epoch 19, loss: 0.0024, time: 45.88
+--->Valid epoch 19, loss: 0.0147, accuracy: 0.9920, time: 2.51
+--->Train epoch 20, loss: 0.0024, time: 45.57
+--->Valid epoch 20, loss: 0.0147, accuracy: 0.9917, time: 2.38
+--->Train epoch 21, loss: 0.0024, time: 45.56
+--->Valid epoch 21, loss: 0.0147, accuracy: 0.9907, time: 2.47
+--->Train epoch 22, loss: 0.0024, time: 45.35
+--->Valid epoch 22, loss: 0.0147, accuracy: 0.9903, time: 2.86
+--->Train epoch 23, loss: 0.0024, time: 44.94
+--->Valid epoch 23, loss: 0.0147, accuracy: 0.9900, time: 2.45
+--->Train epoch 24, loss: 0.0024, time: 45.11
+--->Valid epoch 24, loss: 0.0147, accuracy: 0.9917, time: 2.65
+--->Train epoch 25, loss: 0.0024, time: 45.29
+--->Valid epoch 25, loss: 0.0147, accuracy: 0.9907, time: 2.51
+--->Train epoch 26, loss: 0.0024, time: 45.41
+--->Valid epoch 26, loss: 0.0147, accuracy: 0.9906, time: 2.47
+--->Train epoch 27, loss: 0.0024, time: 45.20
+--->Valid epoch 27, loss: 0.0147, accuracy: 0.9927, time: 2.77
+--->Train epoch 28, loss: 0.0024, time: 44.50
+--->Valid epoch 28, loss: 0.0147, accuracy: 0.9921, time: 2.62
+--->Train epoch 29, loss: 0.0024, time: 44.43
+--->Valid epoch 29, loss: 0.0147, accuracy: 0.9893, time: 2.67
+--->Train epoch 30, loss: 0.0024, time: 44.72
+--->Valid epoch 30, loss: 0.0147, accuracy: 0.9912, time: 2.48
+--->Train epoch 31, loss: 0.0024, time: 44.89
+--->Valid epoch 31, loss: 0.0147, accuracy: 0.9929, time: 2.65
+--->Train epoch 32, loss: 0.0024, time: 44.90
+--->Valid epoch 32, loss: 0.0147, accuracy: 0.9909, time: 2.44
+--->Train epoch 33, loss: 0.0024, time: 45.82
+--->Valid epoch 33, loss: 0.0147, accuracy: 0.9910, time: 2.45
+--->Train epoch 34, loss: 0.0024, time: 45.43
+--->Valid epoch 34, loss: 0.0147, accuracy: 0.9920, time: 2.61
+--->Train epoch 35, loss: 0.0024, time: 44.67
+--->Valid epoch 35, loss: 0.0147, accuracy: 0.9925, time: 2.62
+--->Train epoch 36, loss: 0.0024, time: 45.05
+--->Valid epoch 36, loss: 0.0147, accuracy: 0.9931, time: 2.45
+--->Train epoch 37, loss: 0.0024, time: 45.96
+--->Valid epoch 37, loss: 0.0147, accuracy: 0.9915, time: 2.49
+--->Train epoch 38, loss: 0.0024, time: 46.07
+--->Valid epoch 38, loss: 0.0147, accuracy: 0.9910, time: 2.60
+--->Train epoch 39, loss: 0.0024, time: 46.32
+--->Valid epoch 39, loss: 0.0147, accuracy: 0.9919, time: 2.63
+--->Train epoch 40, loss: 0.0024, time: 48.06
+--->Valid epoch 40, loss: 0.0147, accuracy: 0.9913, time: 2.48
+--->Train epoch 41, loss: 0.0024, time: 52.09
+--->Valid epoch 41, loss: 0.0147, accuracy: 0.9925, time: 2.50
+--->Train epoch 42, loss: 0.0024, time: 56.27
+--->Valid epoch 42, loss: 0.0147, accuracy: 0.9890, time: 2.46
+--->Train epoch 43, loss: 0.0024, time: 53.94
+--->Valid epoch 43, loss: 0.0147, accuracy: 0.9895, time: 2.48
+--->Train epoch 44, loss: 0.0024, time: 57.30
+--->Valid epoch 44, loss: 0.0147, accuracy: 0.9901, time: 2.69
+--->Train epoch 45, loss: 0.0024, time: 56.69
+--->Valid epoch 45, loss: 0.0147, accuracy: 0.9907, time: 2.78
+--->Train epoch 46, loss: 0.0024, time: 56.70
+--->Valid epoch 46, loss: 0.0147, accuracy: 0.9915, time: 2.48
+--->Train epoch 47, loss: 0.0024, time: 67.66
+--->Valid epoch 47, loss: 0.0147, accuracy: 0.9906, time: 2.45
+--->Train epoch 48, loss: 0.0024, time: 75.55
+--->Valid epoch 48, loss: 0.0147, accuracy: 0.9913, time: 2.87
+--->Train epoch 49, loss: 0.0024, time: 65.73
+--->Valid epoch 49, loss: 0.0147, accuracy: 0.9910, time: 2.44
+--->Train epoch 50, loss: 0.0024, time: 67.13
+--->Valid epoch 50, loss: 0.0147, accuracy: 0.9913, time: 2.41
+--->Train epoch 51, loss: 0.0024, time: 68.08
+--->Valid epoch 51, loss: 0.0147, accuracy: 0.9925, time: 2.60
+--->Train epoch 52, loss: 0.0024, time: 87.00
+--->Valid epoch 52, loss: 0.0147, accuracy: 0.9926, time: 2.47
+--->Train epoch 53, loss: 0.0024, time: 81.90
+--->Valid epoch 53, loss: 0.0147, accuracy: 0.9918, time: 2.63
+--->Train epoch 54, loss: 0.0024, time: 70.59
+--->Valid epoch 54, loss: 0.0147, accuracy: 0.9895, time: 2.59
+--->Train epoch 55, loss: 0.0024, time: 80.94
+--->Valid epoch 55, loss: 0.0147, accuracy: 0.9908, time: 2.44
+--->Train epoch 56, loss: 0.0024, time: 105.65
+--->Valid epoch 56, loss: 0.0147, accuracy: 0.9902, time: 2.41
+--->Train epoch 57, loss: 0.0024, time: 115.35
+--->Valid epoch 57, loss: 0.0147, accuracy: 0.9912, time: 2.40
+--->Train epoch 58, loss: 0.0024, time: 123.82
+--->Valid epoch 58, loss: 0.0147, accuracy: 0.9925, time: 2.62
+--->Train epoch 59, loss: 0.0024, time: 129.18
+--->Valid epoch 59, loss: 0.0147, accuracy: 0.9901, time: 2.76
+--->Train epoch 60, loss: 0.0024, time: 131.71
+--->Valid epoch 60, loss: 0.0147, accuracy: 0.9926, time: 2.41
+--->Train epoch 61, loss: 0.0024, time: 121.00
+--->Valid epoch 61, loss: 0.0147, accuracy: 0.9919, time: 2.59
+--->Train epoch 62, loss: 0.0024, time: 128.35
+--->Valid epoch 62, loss: 0.0147, accuracy: 0.9926, time: 2.46
+--->Train epoch 63, loss: 0.0024, time: 135.01
+--->Valid epoch 63, loss: 0.0147, accuracy: 0.9913, time: 2.45
+--->Train epoch 64, loss: 0.0024, time: 134.34
+--->Valid epoch 64, loss: 0.0147, accuracy: 0.9924, time: 2.58
+--->Train epoch 65, loss: 0.0024, time: 149.02
+--->Valid epoch 65, loss: 0.0147, accuracy: 0.9931, time: 2.42
+--->Train epoch 66, loss: 0.0024, time: 151.74
+--->Valid epoch 66, loss: 0.0147, accuracy: 0.9929, time: 2.42
+--->Train epoch 67, loss: 0.0024, time: 152.28
+--->Valid epoch 67, loss: 0.0147, accuracy: 0.9897, time: 2.64
+--->Train epoch 68, loss: 0.0024, time: 143.67
+--->Valid epoch 68, loss: 0.0147, accuracy: 0.9918, time: 2.44
+--->Train epoch 69, loss: 0.0024, time: 150.72
+--->Valid epoch 69, loss: 0.0147, accuracy: 0.9929, time: 2.64
+--->Train epoch 70, loss: 0.0024, time: 153.76
+--->Valid epoch 70, loss: 0.0147, accuracy: 0.9908, time: 2.49
+--->Train epoch 71, loss: 0.0024, time: 142.92
+--->Valid epoch 71, loss: 0.0147, accuracy: 0.9910, time: 2.41
+--->Train epoch 72, loss: 0.0024, time: 154.92
+--->Valid epoch 72, loss: 0.0147, accuracy: 0.9907, time: 2.59
+--->Train epoch 73, loss: 0.0024, time: 170.50
+--->Valid epoch 73, loss: 0.0147, accuracy: 0.9889, time: 2.39
+--->Train epoch 74, loss: 0.0024, time: 162.61
+--->Valid epoch 74, loss: 0.0147, accuracy: 0.9902, time: 2.61
+--->Train epoch 75, loss: 0.0024, time: 164.38
+--->Valid epoch 75, loss: 0.0147, accuracy: 0.9921, time: 2.51
+--->Train epoch 76, loss: 0.0024, time: 154.58
+--->Valid epoch 76, loss: 0.0147, accuracy: 0.9931, time: 2.56
+--->Train epoch 77, loss: 0.0024, time: 157.61
+--->Valid epoch 77, loss: 0.0147, accuracy: 0.9912, time: 2.56
+--->Train epoch 78, loss: 0.0024, time: 163.04
+--->Valid epoch 78, loss: 0.0147, accuracy: 0.9934, time: 2.63
+--->Train epoch 79, loss: 0.0024, time: 162.34
+--->Valid epoch 79, loss: 0.0147, accuracy: 0.9929, time: 2.59
+--->Train epoch 80, loss: 0.0024, time: 156.40
+--->Valid epoch 80, loss: 0.0147, accuracy: 0.9913, time: 2.60
+--->Train epoch 81, loss: 0.0024, time: 147.08
+--->Valid epoch 81, loss: 0.0147, accuracy: 0.9920, time: 2.60
+--->Train epoch 82, loss: 0.0024, time: 141.15
+--->Valid epoch 82, loss: 0.0147, accuracy: 0.9903, time: 2.51
+--->Train epoch 83, loss: 0.0024, time: 144.35
+--->Valid epoch 83, loss: 0.0147, accuracy: 0.9916, time: 2.62
+--->Train epoch 84, loss: 0.0024, time: 152.36
+--->Valid epoch 84, loss: 0.0147, accuracy: 0.9933, time: 2.43
+--->Train epoch 85, loss: 0.0024, time: 153.22
+--->Valid epoch 85, loss: 0.0147, accuracy: 0.9911, time: 2.46
+--->Train epoch 86, loss: 0.0024, time: 150.00
+--->Valid epoch 86, loss: 0.0147, accuracy: 0.9929, time: 2.64
+--->Train epoch 87, loss: 0.0024, time: 155.19
+--->Valid epoch 87, loss: 0.0147, accuracy: 0.9929, time: 2.44
+--->Train epoch 88, loss: 0.0024, time: 147.87
+--->Valid epoch 88, loss: 0.0147, accuracy: 0.9923, time: 2.43
+--->Train epoch 89, loss: 0.0024, time: 143.91
+--->Valid epoch 89, loss: 0.0147, accuracy: 0.9911, time: 2.41
+--->Train epoch 90, loss: 0.0024, time: 131.08
+--->Valid epoch 90, loss: 0.0147, accuracy: 0.9898, time: 2.41
+--->Train epoch 91, loss: 0.0024, time: 131.48
+--->Valid epoch 91, loss: 0.0147, accuracy: 0.9928, time: 2.64
+--->Train epoch 92, loss: 0.0024, time: 135.70
+--->Valid epoch 92, loss: 0.0147, accuracy: 0.9916, time: 2.42
+--->Train epoch 93, loss: 0.0024, time: 128.38
+--->Valid epoch 93, loss: 0.0147, accuracy: 0.9916, time: 2.57
+--->Train epoch 94, loss: 0.0024, time: 126.46
+--->Valid epoch 94, loss: 0.0147, accuracy: 0.9924, time: 2.44
+--->Train epoch 95, loss: 0.0024, time: 130.88
+--->Valid epoch 95, loss: 0.0147, accuracy: 0.9934, time: 2.52
+--->Train epoch 96, loss: 0.0024, time: 134.49
+--->Valid epoch 96, loss: 0.0147, accuracy: 0.9927, time: 2.39
+--->Train epoch 97, loss: 0.0024, time: 126.99
+--->Valid epoch 97, loss: 0.0147, accuracy: 0.9938, time: 2.36
+--->Train epoch 98, loss: 0.0024, time: 122.21
+--->Valid epoch 98, loss: 0.0147, accuracy: 0.9924, time: 2.37
+--->Train epoch 99, loss: 0.0024, time: 123.44
+--->Valid epoch 99, loss: 0.0147, accuracy: 0.9913, time: 2.36
+--->Total time: 9354.78, training time: 9101.38, validation time: 253.35
