@@ -5,7 +5,7 @@ from .version import __version__
 from .base import baseops, arrayops, mathops, randomfunc
 from .base.baseops import dreplace, dmka
 from .base.arrayops import sl, cut, cat, arraycomb
-from .base.mathops import nextpow2, prevpow2, ebeo, r2c, c2r
+from .base.mathops import nextpow2, prevpow2, ebeo, r2c, c2r, conj, real, imag, abs, pow
 from .base.randomfunc import setseed, randgrid, randperm, randperm2d
 
 
@@ -19,10 +19,12 @@ from .utils.file import listxfile, pathjoin, fileparts, readtxt, readnum, readcs
 from .utils.plot_show import cplot, plots, Plots
 from .utils.typevalue import bin2int, peakvalue
 
+from .summary.loss_log import LossLog
 
 from .evaluation.contrast import contrast
 from .evaluation.entropy import entropy
-from .evaluation.norm import frobenius
+from .evaluation.norm import fnorm, pnorm
+from .evaluation.error import mse, sse, mae, sae
 from .evaluation.snr import snr, psnr
 from .evaluation.detection_voc import bbox_iou, calc_detection_voc_ap, calc_detection_voc_prec_rec, eval_detection_voc
 

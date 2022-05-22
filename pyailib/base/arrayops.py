@@ -134,7 +134,7 @@ def arraycomb(arrays, out=None):
 
     Args:
         arrays (list or numpy array): The lists or arrays.
-        out (numpy array, optional): The combination results (defaults is ``None``).
+        out (numpy array, optional): The combination results (defaults is :obj:`None`).
 
     Returns:
         numpy array: The combination results.

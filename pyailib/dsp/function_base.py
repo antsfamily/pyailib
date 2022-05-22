@@ -12,7 +12,7 @@ import pyailib as pl
 def unwrap(x, discont=pl.PI, axis=-1):
     r"""Unwrap by changing deltas between values to :math:`2\pi` complement.
 
-    Unwrap radian phase `x` by changing absolute jumps greater than
+    Unwrap radian phase `x` by changing absoluted jumps greater than
     `discont` to their :math:`2\pi` complement along the given axis.
 
     Parameters
@@ -53,7 +53,7 @@ def unwrap(x, discont=pl.PI, axis=-1):
 def unwrap2(x, discont=pl.PI, axis=-1):
     r"""Unwrap by changing deltas between values to :math:`2\pi` complement.
 
-    Unwrap radian phase `x` by changing absolute jumps greater than
+    Unwrap radian phase `x` by changing absoluted jumps greater than
     `discont` to their :math:`2\pi` complement along the given axis. The elements
     are divided into 2 parts (with equal length) along the given axis.
     The first part is unwrapped in inverse order, while the second part

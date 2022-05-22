@@ -12,6 +12,7 @@ Subpackages
    pyailib.dsp
    pyailib.evaluation
    pyailib.misc
+   pyailib.summary
    pyailib.utils
 
 Submodules

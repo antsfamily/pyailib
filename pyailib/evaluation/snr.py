@@ -17,70 +17,84 @@ def snr():
     pass
 
 
-def psnr(o, r, Vpeak=None, mode='simple'):
+def psnr(P, G, caxis=None, axis=None, vpeak=None, reduction=None):
     r"""Peak Signal-to-Noise Ratio
 
     The Peak Signal-to-Noise Ratio (PSNR) is expressed as
 
     .. math::
-        {\rm PSNR} = 10 \log10(\frac{V_{peak}^2}{\rm MSE})
+        {\rm PSNR} = 10 \log10(\frac{V_{\rm peak}^2}{\rm MSE})
 
-    For float data, :math:`V_{peak} = 1`;
+    For float data, :math:`V_{\rm peak} = 1`;
 
-    For interges, :math:`V_{peak} = 2^{nbits}`,
+    For interges, :math:`V_{\rm peak} = 2^{\rm nbits}`,
     e.g. uint8: 255, uint16: 65535 ...
 
 
     Parameters
     -----------
-    o : array_like
-        Reference data array. For image, it's the original image.
-    r : array_like
+    P : array_like
         The data to be compared. For image, it's the reconstructed image.
-    Vpeak : float, int or None, optional
+    G : array_like
+        Reference data array. For image, it's the original image.
+    vpeak : float, int or None, optional
         The peak value. If None, computes automaticly.
-    mode : str or None, optional
-         'simple' or 'rich'. 'simple' (default) --> just return psnr i.e.
-         'rich' --> return psnr, mse, Vpeak, imgtype.
+    reduction : str, optional
+        The operation in batch dim, :obj:`None`, ``'mean'`` or ``'sum'`` (the default is :obj:`None`)
 
     Returns
     -------
     PSNR : float
         Peak Signal to Noise Ratio value.
 
+    Examples
+    ---------
+
+    ::
+
+        P = np.array([[0, 200, 210], [220, 5, 6]])
+        G = np.array([[251, 200, 210], [220, 5, 6]])
+        PSNR = psnr(P, G, vpeak=None)
+        print(PSNR)
+
+        P = np.array([[251, 200, 210], [220, 5, 6]]).astype('uint8')
+        G = np.array([[0, 200, 210], [220, 5, 6]]).astype('uint8')
+        PSNR = psnr(P, G, vpeak=None)
+        print(PSNR)
+
+        P = np.array([[251, 200, 210], [220, 5, 6]]).astype('float')
+        G = np.array([[0, 200, 210], [220, 5, 6]]).astype('float')
+        PSNR = psnr(P, G, vpeak=None)
+        print(PSNR)
+
     """
 
-    if o.dtype != r.dtype:
-        print("Warning: o(" + str(o.dtype) + ")and r(" + str(r.dtype) +
+    if P.dtype != G.dtype:
+        print("Warning: P(" + str(P.dtype) + ")and G(" + str(G.dtype) +
               ")have different type! PSNR may not right!")
 
-    if Vpeak is None:
-        Vpeak = peakvalue(o)
+    if vpeak is None:
+        vpeak = peakvalue(G)
 
-    MSE = mse(o, r)
-    PSNR = 10 * np.log10((Vpeak ** 2) / MSE)
-    if mode is None:
-        mode = 'simple'
-    if mode == 'rich':
-        return PSNR, MSE, Vpeak, o.dtype
-    else:
-        return PSNR
+    MSE = mse(P, G, caxis=caxis, axis=axis, reduction=reduction)
+    PSNR = 10 * np.log10((vpeak ** 2) / MSE)
+
+    return PSNR
 
 
 if __name__ == '__main__':
-    import pyailib as pl
 
-    o = np.array([[251, 200, 210], [220, 5, 6]])
-    r = np.array([[0, 200, 210], [220, 5, 6]])
-    PSNR, MSE, Vpeak, dtype = pl.psnr(o, r, Vpeak=None, mode='rich')
-    print(PSNR, MSE, Vpeak, dtype)
+    P = np.array([[0, 200, 210], [220, 5, 6]])
+    G = np.array([[251, 200, 210], [220, 5, 6]])
+    PSNR = psnr(P, G, vpeak=None)
+    print(PSNR)
 
-    o = np.array([[251, 200, 210], [220, 5, 6]]).astype('uint8')
-    r = np.array([[0, 200, 210], [220, 5, 6]]).astype('uint8')
-    PSNR, MSE, Vpeak, dtype = pl.psnr(o, r, Vpeak=None, mode='rich')
-    print(PSNR, MSE, Vpeak, dtype)
+    P = np.array([[251, 200, 210], [220, 5, 6]]).astype('uint8')
+    G = np.array([[0, 200, 210], [220, 5, 6]]).astype('uint8')
+    PSNR = psnr(P, G, vpeak=None)
+    print(PSNR)
 
-    o = np.array([[251, 200, 210], [220, 5, 6]]).astype('float')
-    r = np.array([[0, 200, 210], [220, 5, 6]]).astype('float')
-    PSNR, MSE, Vpeak, dtype = pl.psnr(o, r, Vpeak=None, mode='rich')
-    print(PSNR, MSE, Vpeak, dtype)
+    P = np.array([[251, 200, 210], [220, 5, 6]]).astype('float')
+    G = np.array([[0, 200, 210], [220, 5, 6]]).astype('float')
+    PSNR = psnr(P, G, vpeak=None)
+    print(PSNR)

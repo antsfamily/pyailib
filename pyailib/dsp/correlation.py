@@ -214,7 +214,7 @@ def xcorr(A, B, shape='same', mod=None, axis=0):
         - ``'unbiased'``: scales the raw correlation by 1/(M-abs(lags)).
         - ``'coeff'``: normalizes the sequence so that the auto-correlations
                    at zero lag are identically 1.0.
-        - ``None``: no scaling (this is the default).
+        - :obj:`None`: no scaling (this is the default).
     """
 
     if np.ndim(A) == 1 and np.ndim(B) == 1:

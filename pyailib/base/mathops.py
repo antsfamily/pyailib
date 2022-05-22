@@ -124,7 +124,7 @@ def ebeo(a, b, op='+'):
         return [op(i, j) for i, j in zip(a, b)]
 
 
-def r2c(X, caxis=-1, keepdim=False):
+def r2c(X, caxis=-1, keepdims=False):
     r"""convert real-valued array to complex-valued array
 
     Convert real-valued array (the size of :attr:`axis` -th dimension is 2) to complex-valued array
@@ -132,7 +132,7 @@ def r2c(X, caxis=-1, keepdim=False):
     Args:
         X (numpy array): real-valued array.
         caxis (int, optional): the complex axis. Defaults to -1.
-        keepdim (bool, optional): keepdim? default is False.
+        keepdims (bool, optional): keepdims? default is False.
 
     Returns:
         numpy array: complex-valued array
@@ -147,7 +147,7 @@ def r2c(X, caxis=-1, keepdim=False):
 
             Xreal = np.random.randint(0, 30, (3, 2, 4))
             Xcplx = r2c(Xreal, caxis=1)
-            Yreal = c2r(Xcplx, caxis=0, keepdim=True)
+            Yreal = c2r(Xcplx, caxis=0, keepdims=True)
 
             print(Xreal, Xreal.shape, 'Xreal')
             print(Xcplx, Xcplx.shape, 'Xcplx')
@@ -186,7 +186,7 @@ def r2c(X, caxis=-1, keepdim=False):
             0.0 0.0, Error
     """
 
-    if keepdim:
+    if keepdims:
         idxreal = pl.sl(np.ndim(X), axis=caxis, idx=[[0]])
         idximag = pl.sl(np.ndim(X), axis=caxis, idx=[[1]])
     else:
@@ -216,7 +216,7 @@ def c2r(X, caxis=-1):
 
             Xreal = np.random.randint(0, 30, (3, 2, 4))
             Xcplx = r2c(Xreal, caxis=1)
-            Yreal = c2r(Xcplx, caxis=0, keepdim=True)
+            Yreal = c2r(Xcplx, caxis=0, keepdims=True)
 
             print(Xreal, Xreal.shape, 'Xreal')
             print(Xcplx, Xcplx.shape, 'Xcplx')
@@ -258,6 +258,293 @@ def c2r(X, caxis=-1):
     return np.stack((X.real, X.imag), axis=caxis)
 
 
+def conj(X, caxis=None):
+    r"""conjugates a array
+
+    Both complex and real representation are supported.
+
+    Parameters
+    ----------
+    X : array
+        input
+    caxis : int or None
+        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
+        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`X` will be treated as real-valued
+
+    Returns
+    -------
+    array
+         the inputs's conjugate matrix.
+
+    Examples
+    ---------
+
+    ::
+
+        np.random.seed(2020)
+        X = np.random.rand(2, 3, 3)
+
+        print('---conj')
+        print(conj(X, caxis=0))
+        print(conj(X[0] + 1j * X[1]))
+
+        # ---output
+        ---conj
+        [[[ 0.98627683  0.87339195  0.50974552]
+        [ 0.27183571  0.33691873  0.21695427]
+        [ 0.27647714  0.34331559  0.86215894]]
+
+        [[-0.15669967 -0.14088724 -0.75708028]
+        [-0.73632492 -0.35566309 -0.34109302]
+        [-0.66680305 -0.21710064 -0.56142698]]]
+        [[0.98627683-0.15669967j 0.87339195-0.14088724j 0.50974552-0.75708028j]
+        [0.27183571-0.73632492j 0.33691873-0.35566309j 0.21695427-0.34109302j]
+        [0.27647714-0.66680305j 0.34331559-0.21710064j 0.86215894-0.56142698j]]
+
+    """
+
+    if np.iscomplex(X).any():  # complex in complex
+        return np.conj(X)
+    else:
+        if caxis is None:  # real
+            return X
+        else:  # complex in real
+            d = np.ndim(X)
+            return np.concatenate((X[pl.sl(d, axis=caxis, idx=[[0]])], -X[pl.sl(d, axis=caxis, idx=[[1]])]), axis=caxis)
+
+
+def real(X, caxis=None, keepdims=False):
+    r"""obtain real part of a array
+
+    Both complex and real representation are supported.
+
+    Parameters
+    ----------
+    X : array
+        input
+    caxis : int or None
+        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
+        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`X` will be treated as real-valued
+    keepdims : bool, optional
+        keep dimensions?
+
+    Returns
+    -------
+    array
+         the inputs's real part array.
+
+    Examples
+    ---------
+
+    ::
+
+        np.random.seed(2020)
+        X = np.random.rand(2, 3, 3)
+
+        print('---real')
+        print(real(X, caxis=0))
+        print(real(X[0] + 1j * X[1]))
+
+        # ---output
+        ---real
+        [[0.98627683 0.87339195 0.50974552]
+        [0.27183571 0.33691873 0.21695427]
+        [0.27647714 0.34331559 0.86215894]]
+        [[0.98627683 0.87339195 0.50974552]
+        [0.27183571 0.33691873 0.21695427]
+        [0.27647714 0.34331559 0.86215894]]
+    """
+
+    if np.iscomplex(X).any():  # complex in complex
+        return X.real
+    else:
+        if caxis is None:  # real
+            return X
+        else:  # complex in real
+            d = np.ndim(X)
+            idx = [[0]] if keepdims else [0]
+            return X[pl.sl(d, axis=caxis, idx=idx)]
+
+
+def imag(X, caxis=None, keepdims=False):
+    r"""obtain imaginary part of a array
+
+    Both complex and real representation are supported.
+
+    Parameters
+    ----------
+    X : array
+        input
+    caxis : int or None
+        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
+        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`X` will be treated as real-valued
+    keepdims : bool, optional
+        keep dimensions?
+
+    Returns
+    -------
+    array
+         the inputs's imaginary part array.
+
+    Examples
+    ---------
+
+    ::
+
+        np.random.seed(2020)
+        X = np.random.rand(2, 3, 3)
+
+        print('---imag')
+        print(imag(X, caxis=0))
+        print(imag(X[0] + 1j * X[1]))
+
+        # ---output
+        ---imag
+        [[0.15669967 0.14088724 0.75708028]
+        [0.73632492 0.35566309 0.34109302]
+        [0.66680305 0.21710064 0.56142698]]
+        [[0.15669967 0.14088724 0.75708028]
+        [0.73632492 0.35566309 0.34109302]
+        [0.66680305 0.21710064 0.56142698]]
+
+    """
+
+    if np.iscomplex(X).any():  # complex in complex
+        return np.imag(X)
+    else:
+        if caxis is None:  # real
+            return np.zeros_like(X)
+        else:  # complex in real
+            d = np.ndim(X)
+            idx = [[1]] if keepdims else [1]
+            return X[pl.sl(d, axis=caxis, idx=idx)]
+
+
+def abs(X, caxis=None, keepdims=False):
+    r"""obtain amplitude of a array
+
+    Both complex and real representation are supported.
+
+    .. math::
+       {\rm abs}({\bf X}) = |{\bf x}| = \sqrt{u^2 + v^2}, x\in {\bf X}
+
+    where, :math:`u, v` are the real and imaginary part of x, respectively.
+
+    Parameters
+    ----------
+    X : array
+        input
+    caxis : int or None
+        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
+        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`X` will be treated as real-valued
+    keepdims : bool, optional
+        keep dimensions?
+
+    Returns
+    -------
+    array
+         the inputs's amplitude.
+   
+    Examples
+    ---------
+
+    ::
+
+        np.random.seed(2020)
+        X = np.random.rand(2, 3, 3)
+
+        print('---abs')
+        print(abs(X, caxis=0))
+        print(abs(X[0] + 1j * X[1]))
+
+        # ---output
+        ---abs
+        [[0.99864747 0.88468226 0.91269439]
+        [0.78490066 0.48990863 0.40424448]
+        [0.72184896 0.40619981 1.02884318]]
+        [[0.99864747 0.88468226 0.91269439]
+        [0.78490066 0.48990863 0.40424448]
+        [0.72184896 0.40619981 1.02884318]]
+
+    """
+
+    if np.iscomplex(X).any():  # complex in complex
+        return np.abs(X)
+    else:
+        if caxis is None:  # real
+            return np.abs(X)
+        else:  # complex in real
+            d = np.ndim(X)
+            idxreal = [[0]] if keepdims else [0]
+            idximag = [[1]] if keepdims else [1]
+            return np.sqrt((X[pl.sl(d, axis=caxis, idx=idxreal)]**2 + X[pl.sl(d, axis=caxis, idx=idximag)]**2))
+
+
+def pow(X, caxis=None, keepdims=False):
+    r"""obtain power of a array
+
+    Both complex and real representation are supported.
+
+    .. math::
+       {\rm pow}({\bf X}) = |{\bf x}| = u^2 + v^2, x\in {\bf X}
+
+    where, :math:`u, v` are the real and imaginary part of x, respectively.
+
+    Parameters
+    ----------
+    X : array
+        input
+    caxis : int or None
+        If :attr:`X` is complex-valued, :attr:`cdim` is ignored. If :attr:`X` is real-valued and :attr:`cdim` is integer
+        then :attr:`X` will be treated as complex-valued, in this case, :attr:`cdim` specifies the complex axis;
+        otherwise (None), :attr:`X` will be treated as real-valued
+    keepdims : bool, optional
+        keep dimensions?
+
+    Returns
+    -------
+    array
+         the inputs's power.
+   
+    Examples
+    ---------
+
+    ::
+
+        np.random.seed(2020)
+        X = np.random.rand(2, 3, 3)
+
+        print('---pow')
+        print(pow(X, caxis=0))
+        print(pow(X[0] + 1j * X[1]))
+
+        # ---output
+        ---pow
+        [[0.99729677 0.78266271 0.83301105]
+        [0.61606904 0.24001046 0.1634136 ]
+        [0.52106592 0.16499828 1.05851829]]
+        [[0.99729677 0.78266271 0.83301105]
+        [0.61606904 0.24001046 0.1634136 ]
+        [0.52106592 0.16499828 1.05851829]]
+
+    """
+
+    if np.iscomplex(X).any():  # complex in complex
+        return (X.conj() * X).real
+    else:
+        if caxis is None:  # real
+            return X**2
+        else:  # complex in real
+            d = np.ndim(X)
+            idxreal = [[0]] if keepdims else [0]
+            idximag = [[1]] if keepdims else [1]
+            return X[pl.sl(d, axis=caxis, idx=idxreal)]**2 + X[pl.sl(d, axis=caxis, idx=idximag)]**2
+
+
 if __name__ == '__main__':
 
     import numpy as np
@@ -265,7 +552,7 @@ if __name__ == '__main__':
     np.random.seed(2020)
 
     Xreal = np.random.randint(0, 30, (3, 2, 4))
-    Xcplx = r2c(Xreal, caxis=1, keepdim=True)
+    Xcplx = r2c(Xreal, caxis=1, keepdims=True)
     Yreal = c2r(Xcplx, caxis=0)
 
     print(Xreal, Xreal.shape, 'Xreal')
@@ -279,4 +566,25 @@ if __name__ == '__main__':
     print(prevpow2(7.3), nextpow2(7.3))
     print(prevpow2(-3.5), nextpow2(-3.5))
 
+    np.random.seed(2020)
+    X = np.random.rand(2, 3, 3)
 
+    print('---conj')
+    print(conj(X, caxis=0))
+    print(conj(X[0] + 1j * X[1]))
+
+    print('---real')
+    print(real(X, caxis=0))
+    print(real(X[0] + 1j * X[1]))
+
+    print('---imag')
+    print(imag(X, caxis=0))
+    print(imag(X[0] + 1j * X[1]))
+
+    print('---abs')
+    print(abs(X, caxis=0))
+    print(abs(X[0] + 1j * X[1]))
+
+    print('---pow')
+    print(pow(X, caxis=0))
+    print(pow(X[0] + 1j * X[1]))
