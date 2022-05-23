@@ -22,7 +22,7 @@ def standardization(X, mean=None, std=None, axis=None, extra=False):
         X (ndarray): data to be normalized,
         mean (list or None, optional): mean value (the default is None, which means auto computed)
         std (list or None, optional): standard deviation (the default is None, which means auto computed)
-        axis (list or int, optional): specify the axis for computing mean and standard deviation (the default is None, which means all elements)
+        axis (list, tuple or int, optional): specify the axis for computing mean and standard deviation (the default is None, which means all elements)
         extra (bool, optional): if True, also return the mean and std (the default is False, which means just return the standardized data)
 
     Returns:
@@ -31,6 +31,8 @@ def standardization(X, mean=None, std=None, axis=None, extra=False):
 
     if type(X) is not np.ndarray:
         X = np.array(X)
+
+    axis = tuple(axis) if type(axis) is list else axis
 
     if mean is None:
         if axis is None:
