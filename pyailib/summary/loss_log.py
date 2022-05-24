@@ -5,7 +5,7 @@
 # @Link    : http://iridescent.ink
 # @Version : $1.0$
 
-from matplotlib import pyplot as plt
+import matplotlib.pyplot as plt
 
 
 class LossLog():
@@ -43,7 +43,16 @@ class LossLog():
 
     def plot(self, x=None):
         legend = []
-        plt.figure()
+        try:
+            plt.figure()
+        except Exception as e:
+            print(e.args)
+            print(str(e))
+            print(repr(e))
+            import matplotlib; matplotlib.use('Agg');
+            import matplotlib.pyplot as plt
+            plt.figure()
+
         for k, v in self.losses.items():
             if len(v) > 0:
                 if x is None:
@@ -90,7 +99,7 @@ class LossLog():
 if __name__ == '__main__':
 
     loslog = LossLog(plotdir='./', xlabel='xlabel', ylabel='ylabel')
-    loslog = LossLog(plotdir='./', xlabel='Epoch', ylabel='Loss', title=None, filename='LossEpoch', logdict={'train': [], 'valid': []})
+    loslog = LossLog(plotdir=None, xlabel='Epoch', ylabel='Loss', title=None, filename='LossEpoch', logdict={'train': [], 'valid': []})
     for n in range(100):
         loslog.add('train', n)
         loslog.add('valid', n - 1)
