@@ -45,7 +45,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="setup module" href="setup.html" />
-    <link rel="prev" title="pyailib.misc package" href="pyailib.misc.html" /> 
+    <link rel="prev" title="pyailib.summary package" href="pyailib.summary.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -101,6 +101,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pyailib.dsp.html">pyailib.dsp package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pyailib.evaluation.html">pyailib.evaluation package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pyailib.misc.html">pyailib.misc package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyailib.summary.html">pyailib.summary package</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">pyailib.utils package</a></li>
 </ul>
 </li>
@@ -395,7 +396,7 @@ The default is None, which means any extension.</p></li>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – The path string of the file.</p></li>
 <li><p><strong>sep</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – The separation character. Such as <code class="docutils literal notranslate"><span class="pre">','</span></code> or <code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">'</span></code>. If None (default) or <code class="docutils literal notranslate"><span class="pre">''</span></code> (empty) return a list of all the lines.</p></li>
-<li><p><strong>vfn</strong> (<em>function</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a><em>, </em><em>optional</em>) – The function for formating the numbers. <code class="docutils literal notranslate"><span class="pre">float</span></code> –&gt; convert to float number; <code class="docutils literal notranslate"><span class="pre">int</span></code> –&gt; convert to integer number…, The default is <code class="docutils literal notranslate"><span class="pre">None</span></code>, which means won’t converted, string format.</p></li>
+<li><p><strong>vfn</strong> (<em>function</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a><em>, </em><em>optional</em>) – The function for formating the numbers. <code class="docutils literal notranslate"><span class="pre">float</span></code> –&gt; convert to float number; <code class="docutils literal notranslate"><span class="pre">int</span></code> –&gt; convert to integer number…, The default is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, which means won’t converted, string format.</p></li>
 <li><p><strong>nlines</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a><em>, </em><em>optional</em>) – The number of lines for reading, the default is None, which means all the lines.</p></li>
 </ul>
 </dd>
@@ -552,7 +553,7 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <dt class="sig sig-object py" id="pyailib.utils.ios.loadh5">
 <span class="sig-prename descclassname"><span class="pre">pyailib.utils.ios.</span></span><span class="sig-name descname"><span class="pre">loadh5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyailib.utils.ios.loadh5" title="Permalink to this definition">¶</a></dt>
 <dd><p>load h5 file</p>
-<p>load data from a h5 file. (<code class="docutils literal notranslate"><span class="pre">'None'</span></code> will be replaced by <code class="docutils literal notranslate"><span class="pre">None</span></code>)</p>
+<p>load data from a h5 file. (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> will be replaced by <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -587,7 +588,7 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <dt class="sig sig-object py" id="pyailib.utils.ios.loadmat">
 <span class="sig-prename descclassname"><span class="pre">pyailib.utils.ios.</span></span><span class="sig-name descname"><span class="pre">loadmat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyailib.utils.ios.loadmat" title="Permalink to this definition">¶</a></dt>
 <dd><p>load data from an <code class="docutils literal notranslate"><span class="pre">.mat</span></code> file</p>
-<p>load data from an <code class="docutils literal notranslate"><span class="pre">.mat</span></code> file (<code class="docutils literal notranslate"><span class="pre">'None'</span></code> will be replaced by <code class="docutils literal notranslate"><span class="pre">None</span></code>)</p>
+<p>load data from an <code class="docutils literal notranslate"><span class="pre">.mat</span></code> file (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> will be replaced by <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>)</p>
 <p>see <a class="reference external" href="https://stackoverflow.com/questions/7008608/scipy-io-loadmat-nested-structures-i-e-dictionaries">https://stackoverflow.com/questions/7008608/scipy-io-loadmat-nested-structures-i-e-dictionaries</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -636,7 +637,7 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <dt class="sig sig-object py" id="pyailib.utils.ios.saveh5">
 <span class="sig-prename descclassname"><span class="pre">pyailib.utils.ios.</span></span><span class="sig-name descname"><span class="pre">saveh5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mdict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'w'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyailib.utils.ios.saveh5" title="Permalink to this definition">¶</a></dt>
 <dd><p>save data to h5 file</p>
-<p>save data to h5 file (<code class="docutils literal notranslate"><span class="pre">None</span></code> will be replaced by <code class="docutils literal notranslate"><span class="pre">'None'</span></code>)</p>
+<p>save data to h5 file (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> will be replaced by <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -658,7 +659,7 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <dt class="sig sig-object py" id="pyailib.utils.ios.savemat">
 <span class="sig-prename descclassname"><span class="pre">pyailib.utils.ios.</span></span><span class="sig-name descname"><span class="pre">savemat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mdict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'5'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyailib.utils.ios.savemat" title="Permalink to this definition">¶</a></dt>
 <dd><p>save data to an <code class="docutils literal notranslate"><span class="pre">.mat</span></code> file</p>
-<p>save data to <code class="docutils literal notranslate"><span class="pre">.mat</span></code> file (<code class="docutils literal notranslate"><span class="pre">None</span></code> will be replaced by <code class="docutils literal notranslate"><span class="pre">'None'</span></code>)</p>
+<p>save data to <code class="docutils literal notranslate"><span class="pre">.mat</span></code> file (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> will be replaced by <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -738,7 +739,7 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
         <a href="setup.html" class="btn btn-neutral float-right" title="setup module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="pyailib.misc.html" class="btn btn-neutral float-left" title="pyailib.misc package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="pyailib.summary.html" class="btn btn-neutral float-left" title="pyailib.summary package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

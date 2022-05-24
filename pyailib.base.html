@@ -101,6 +101,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pyailib.dsp.html">pyailib.dsp package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pyailib.evaluation.html">pyailib.evaluation package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pyailib.misc.html">pyailib.misc package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyailib.summary.html">pyailib.summary package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pyailib.utils.html">pyailib.utils package</a></li>
 </ul>
 </li>
@@ -196,7 +197,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>arrays</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a><em> or </em><em>numpy array</em>) – The lists or arrays.</p></li>
-<li><p><strong>out</strong> (<em>numpy array</em><em>, </em><em>optional</em>) – The combination results (defaults is <code class="docutils literal notranslate"><span class="pre">None</span></code>).</p></li>
+<li><p><strong>out</strong> (<em>numpy array</em><em>, </em><em>optional</em>) – The combination results (defaults is <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -329,6 +330,53 @@ this will produce a <span class="math">\(12\times 3\)</span> array.</p>
 <section id="module-pyailib.base.mathops">
 <span id="pyailib-base-mathops-module"></span><h2>pyailib.base.mathops module<a class="headerlink" href="#module-pyailib.base.mathops" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
+<dt class="sig sig-object py" id="pyailib.base.mathops.abs">
+<span class="sig-prename descclassname"><span class="pre">pyailib.base.mathops.</span></span><span class="sig-name descname"><span class="pre">abs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caxis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdims</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyailib.base.mathops.abs" title="Permalink to this definition">¶</a></dt>
+<dd><p>obtain amplitude of a array</p>
+<p>Both complex and real representation are supported.</p>
+<div class="math">
+\[{\rm abs}({\bf X}) = |{\bf x}| = \sqrt{u^2 + v^2}, x\in {\bf X}
+
+\]</div>
+<p>where, <span class="math">\(u, v\)</span> are the real and imaginary part of x, respectively.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array</em>) – input</p></li>
+<li><p><strong>caxis</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
+then <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
+otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as real-valued</p></li>
+<li><p><strong>keepdims</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – keep dimensions?</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the inputs’s amplitude.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---abs&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">caxis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="c1"># ---output</span>
+<span class="o">---</span><span class="nb">abs</span>
+<span class="p">[[</span><span class="mf">0.99864747</span> <span class="mf">0.88468226</span> <span class="mf">0.91269439</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.78490066</span> <span class="mf">0.48990863</span> <span class="mf">0.40424448</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.72184896</span> <span class="mf">0.40619981</span> <span class="mf">1.02884318</span><span class="p">]]</span>
+<span class="p">[[</span><span class="mf">0.99864747</span> <span class="mf">0.88468226</span> <span class="mf">0.91269439</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.78490066</span> <span class="mf">0.48990863</span> <span class="mf">0.40424448</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.72184896</span> <span class="mf">0.40619981</span> <span class="mf">1.02884318</span><span class="p">]]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="pyailib.base.mathops.c2r">
 <span class="sig-prename descclassname"><span class="pre">pyailib.base.mathops.</span></span><span class="sig-name descname"><span class="pre">c2r</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caxis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyailib.base.mathops.c2r" title="Permalink to this definition">¶</a></dt>
 <dd><p>convert complex-valued array to real-valued array</p>
@@ -353,7 +401,7 @@ this will produce a <span class="math">\(12\times 3\)</span> array.</p>
 
 <span class="n">Xreal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">Xcplx</span> <span class="o">=</span> <span class="n">r2c</span><span class="p">(</span><span class="n">Xreal</span><span class="p">,</span> <span class="n">caxis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">Yreal</span> <span class="o">=</span> <span class="n">c2r</span><span class="p">(</span><span class="n">Xcplx</span><span class="p">,</span> <span class="n">caxis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">Yreal</span> <span class="o">=</span> <span class="n">c2r</span><span class="p">(</span><span class="n">Xcplx</span><span class="p">,</span> <span class="n">caxis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">Xreal</span><span class="p">,</span> <span class="n">Xreal</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39;Xreal&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">Xcplx</span><span class="p">,</span> <span class="n">Xcplx</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39;Xcplx&#39;</span><span class="p">)</span>
@@ -395,6 +443,51 @@ this will produce a <span class="math">\(12\times 3\)</span> array.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="pyailib.base.mathops.conj">
+<span class="sig-prename descclassname"><span class="pre">pyailib.base.mathops.</span></span><span class="sig-name descname"><span class="pre">conj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caxis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyailib.base.mathops.conj" title="Permalink to this definition">¶</a></dt>
+<dd><p>conjugates a array</p>
+<p>Both complex and real representation are supported.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array</em>) – input</p></li>
+<li><p><strong>caxis</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
+then <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
+otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as real-valued</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the inputs’s conjugate matrix.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---conj&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">conj</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">caxis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">conj</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="c1"># ---output</span>
+<span class="o">---</span><span class="n">conj</span>
+<span class="p">[[[</span> <span class="mf">0.98627683</span>  <span class="mf">0.87339195</span>  <span class="mf">0.50974552</span><span class="p">]</span>
+<span class="p">[</span> <span class="mf">0.27183571</span>  <span class="mf">0.33691873</span>  <span class="mf">0.21695427</span><span class="p">]</span>
+<span class="p">[</span> <span class="mf">0.27647714</span>  <span class="mf">0.34331559</span>  <span class="mf">0.86215894</span><span class="p">]]</span>
+
+<span class="p">[[</span><span class="o">-</span><span class="mf">0.15669967</span> <span class="o">-</span><span class="mf">0.14088724</span> <span class="o">-</span><span class="mf">0.75708028</span><span class="p">]</span>
+<span class="p">[</span><span class="o">-</span><span class="mf">0.73632492</span> <span class="o">-</span><span class="mf">0.35566309</span> <span class="o">-</span><span class="mf">0.34109302</span><span class="p">]</span>
+<span class="p">[</span><span class="o">-</span><span class="mf">0.66680305</span> <span class="o">-</span><span class="mf">0.21710064</span> <span class="o">-</span><span class="mf">0.56142698</span><span class="p">]]]</span>
+<span class="p">[[</span><span class="mf">0.98627683</span><span class="o">-</span><span class="mf">0.15669967</span><span class="n">j</span> <span class="mf">0.87339195</span><span class="o">-</span><span class="mf">0.14088724</span><span class="n">j</span> <span class="mf">0.50974552</span><span class="o">-</span><span class="mf">0.75708028</span><span class="n">j</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.27183571</span><span class="o">-</span><span class="mf">0.73632492</span><span class="n">j</span> <span class="mf">0.33691873</span><span class="o">-</span><span class="mf">0.35566309</span><span class="n">j</span> <span class="mf">0.21695427</span><span class="o">-</span><span class="mf">0.34109302</span><span class="n">j</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.27647714</span><span class="o">-</span><span class="mf">0.66680305</span><span class="n">j</span> <span class="mf">0.34331559</span><span class="o">-</span><span class="mf">0.21710064</span><span class="n">j</span> <span class="mf">0.86215894</span><span class="o">-</span><span class="mf">0.56142698</span><span class="n">j</span><span class="p">]]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="pyailib.base.mathops.ebeo">
 <span class="sig-prename descclassname"><span class="pre">pyailib.base.mathops.</span></span><span class="sig-name descname"><span class="pre">ebeo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">op</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'+'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyailib.base.mathops.ebeo" title="Permalink to this definition">¶</a></dt>
 <dd><p>element by element operation</p>
@@ -427,6 +520,48 @@ this will produce a <span class="math">\(12\times 3\)</span> array.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="pyailib.base.mathops.imag">
+<span class="sig-prename descclassname"><span class="pre">pyailib.base.mathops.</span></span><span class="sig-name descname"><span class="pre">imag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caxis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdims</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyailib.base.mathops.imag" title="Permalink to this definition">¶</a></dt>
+<dd><p>obtain imaginary part of a array</p>
+<p>Both complex and real representation are supported.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array</em>) – input</p></li>
+<li><p><strong>caxis</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
+then <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
+otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as real-valued</p></li>
+<li><p><strong>keepdims</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – keep dimensions?</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the inputs’s imaginary part array.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---imag&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imag</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">caxis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imag</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="c1"># ---output</span>
+<span class="o">---</span><span class="n">imag</span>
+<span class="p">[[</span><span class="mf">0.15669967</span> <span class="mf">0.14088724</span> <span class="mf">0.75708028</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.73632492</span> <span class="mf">0.35566309</span> <span class="mf">0.34109302</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.66680305</span> <span class="mf">0.21710064</span> <span class="mf">0.56142698</span><span class="p">]]</span>
+<span class="p">[[</span><span class="mf">0.15669967</span> <span class="mf">0.14088724</span> <span class="mf">0.75708028</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.73632492</span> <span class="mf">0.35566309</span> <span class="mf">0.34109302</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.66680305</span> <span class="mf">0.21710064</span> <span class="mf">0.56142698</span><span class="p">]]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="pyailib.base.mathops.nextpow2">
 <span class="sig-prename descclassname"><span class="pre">pyailib.base.mathops.</span></span><span class="sig-name descname"><span class="pre">nextpow2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyailib.base.mathops.nextpow2" title="Permalink to this definition">¶</a></dt>
 <dd><p>get the next higher power of 2.</p>
@@ -455,6 +590,53 @@ this will produce a <span class="math">\(12\times 3\)</span> array.</p>
 <span class="o">-</span><span class="mi">2</span> <span class="o">-</span><span class="mi">1</span>
 <span class="mi">2</span> <span class="mi">3</span>
 <span class="mi">1</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyailib.base.mathops.pow">
+<span class="sig-prename descclassname"><span class="pre">pyailib.base.mathops.</span></span><span class="sig-name descname"><span class="pre">pow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caxis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdims</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyailib.base.mathops.pow" title="Permalink to this definition">¶</a></dt>
+<dd><p>obtain power of a array</p>
+<p>Both complex and real representation are supported.</p>
+<div class="math">
+\[{\rm pow}({\bf X}) = |{\bf x}| = u^2 + v^2, x\in {\bf X}
+
+\]</div>
+<p>where, <span class="math">\(u, v\)</span> are the real and imaginary part of x, respectively.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array</em>) – input</p></li>
+<li><p><strong>caxis</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
+then <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
+otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as real-valued</p></li>
+<li><p><strong>keepdims</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – keep dimensions?</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the inputs’s power.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---pow&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">caxis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="c1"># ---output</span>
+<span class="o">---</span><span class="nb">pow</span>
+<span class="p">[[</span><span class="mf">0.99729677</span> <span class="mf">0.78266271</span> <span class="mf">0.83301105</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.61606904</span> <span class="mf">0.24001046</span> <span class="mf">0.1634136</span> <span class="p">]</span>
+<span class="p">[</span><span class="mf">0.52106592</span> <span class="mf">0.16499828</span> <span class="mf">1.05851829</span><span class="p">]]</span>
+<span class="p">[[</span><span class="mf">0.99729677</span> <span class="mf">0.78266271</span> <span class="mf">0.83301105</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.61606904</span> <span class="mf">0.24001046</span> <span class="mf">0.1634136</span> <span class="p">]</span>
+<span class="p">[</span><span class="mf">0.52106592</span> <span class="mf">0.16499828</span> <span class="mf">1.05851829</span><span class="p">]]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -494,7 +676,7 @@ this will produce a <span class="math">\(12\times 3\)</span> array.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pyailib.base.mathops.r2c">
-<span class="sig-prename descclassname"><span class="pre">pyailib.base.mathops.</span></span><span class="sig-name descname"><span class="pre">r2c</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caxis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyailib.base.mathops.r2c" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pyailib.base.mathops.</span></span><span class="sig-name descname"><span class="pre">r2c</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caxis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdims</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyailib.base.mathops.r2c" title="Permalink to this definition">¶</a></dt>
 <dd><p>convert real-valued array to complex-valued array</p>
 <p>Convert real-valued array (the size of <code class="xref py py-attr docutils literal notranslate"><span class="pre">axis</span></code> -th dimension is 2) to complex-valued array</p>
 <dl class="field-list simple">
@@ -502,7 +684,7 @@ this will produce a <span class="math">\(12\times 3\)</span> array.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>numpy array</em>) – real-valued array.</p></li>
 <li><p><strong>caxis</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – the complex axis. Defaults to -1.</p></li>
-<li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – keepdim? default is False.</p></li>
+<li><p><strong>keepdims</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – keepdims? default is False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -519,7 +701,7 @@ this will produce a <span class="math">\(12\times 3\)</span> array.</p>
 
 <span class="n">Xreal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">Xcplx</span> <span class="o">=</span> <span class="n">r2c</span><span class="p">(</span><span class="n">Xreal</span><span class="p">,</span> <span class="n">caxis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">Yreal</span> <span class="o">=</span> <span class="n">c2r</span><span class="p">(</span><span class="n">Xcplx</span><span class="p">,</span> <span class="n">caxis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">Yreal</span> <span class="o">=</span> <span class="n">c2r</span><span class="p">(</span><span class="n">Xcplx</span><span class="p">,</span> <span class="n">caxis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">Xreal</span><span class="p">,</span> <span class="n">Xreal</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39;Xreal&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">Xcplx</span><span class="p">,</span> <span class="n">Xcplx</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39;Xcplx&#39;</span><span class="p">)</span>
@@ -556,6 +738,48 @@ this will produce a <span class="math">\(12\times 3\)</span> array.</p>
 <span class="p">[[</span> <span class="mf">3.</span>  <span class="mf">6.</span>  <span class="mf">5.</span> <span class="mf">16.</span><span class="p">]]]]</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="n">Yreal</span>
 
 <span class="mf">0.0</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">Error</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyailib.base.mathops.real">
+<span class="sig-prename descclassname"><span class="pre">pyailib.base.mathops.</span></span><span class="sig-name descname"><span class="pre">real</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caxis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdims</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyailib.base.mathops.real" title="Permalink to this definition">¶</a></dt>
+<dd><p>obtain real part of a array</p>
+<p>Both complex and real representation are supported.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array</em>) – input</p></li>
+<li><p><strong>caxis</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><em>None</em></a>) – If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is complex-valued, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is ignored. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> is real-valued and <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> is integer
+then <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as complex-valued, in this case, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cdim</span></code> specifies the complex axis;
+otherwise (None), <code class="xref py py-attr docutils literal notranslate"><span class="pre">X</span></code> will be treated as real-valued</p></li>
+<li><p><strong>keepdims</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – keep dimensions?</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the inputs’s real part array.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---real&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">real</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">caxis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">real</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="c1"># ---output</span>
+<span class="o">---</span><span class="n">real</span>
+<span class="p">[[</span><span class="mf">0.98627683</span> <span class="mf">0.87339195</span> <span class="mf">0.50974552</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.27183571</span> <span class="mf">0.33691873</span> <span class="mf">0.21695427</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.27647714</span> <span class="mf">0.34331559</span> <span class="mf">0.86215894</span><span class="p">]]</span>
+<span class="p">[[</span><span class="mf">0.98627683</span> <span class="mf">0.87339195</span> <span class="mf">0.50974552</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.27183571</span> <span class="mf">0.33691873</span> <span class="mf">0.21695427</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">0.27647714</span> <span class="mf">0.34331559</span> <span class="mf">0.86215894</span><span class="p">]]</span>
 </pre></div>
 </div>
 </dd></dl>
