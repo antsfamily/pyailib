@@ -124,8 +124,8 @@ def mse(X, Y, caxis=None, axis=None, norm=False, reduction='mean'):
                E = np.mean(X**2, axis=axis)
         else:  # complex in real
             d = np.ndim(X)
-            idxreal = pl.sl(d, axis=caxis, idx=[0])
-            idximag = pl.sl(d, axis=caxis, idx=[1])
+            idxreal = pl.sl(d, axis=caxis, idx=[[0]])
+            idximag = pl.sl(d, axis=caxis, idx=[[1]])
 
             if axis is None:
                E = np.mean(X[idxreal]**2 + X[idximag]**2)
@@ -230,8 +230,8 @@ def sse(X, Y, caxis=None, axis=None, norm=False, reduction='mean'):
                E = np.sum(X**2, axis=axis)
         else:  # complex in real
             d = np.ndim(X)
-            idxreal = pl.sl(d, axis=caxis, idx=[0])
-            idximag = pl.sl(d, axis=caxis, idx=[1])
+            idxreal = pl.sl(d, axis=caxis, idx=[[0]])
+            idximag = pl.sl(d, axis=caxis, idx=[[1]])
 
             if axis is None:
                E = np.sum(X[idxreal]**2 + X[idximag]**2)
@@ -336,8 +336,8 @@ def mae(X, Y, caxis=None, axis=None, norm=False, reduction='mean'):
                E = np.mean(np.abs(X), axis=axis)
         else:  # complex in real
             d = np.ndim(X)
-            idxreal = pl.sl(d, axis=caxis, idx=[0])
-            idximag = pl.sl(d, axis=caxis, idx=[1])
+            idxreal = pl.sl(d, axis=caxis, idx=[[0]])
+            idximag = pl.sl(d, axis=caxis, idx=[[1]])
 
             if axis is None:
                E = np.mean(np.sqrt(X[idxreal]**2 + X[idximag]**2))
@@ -442,8 +442,8 @@ def sae(X, Y, caxis=None, axis=None, norm=False, reduction='mean'):
                E = np.sum(np.abs(X), axis=axis)
         else:  # complex in real
             d = np.ndim(X)
-            idxreal = pl.sl(d, axis=caxis, idx=[0])
-            idximag = pl.sl(d, axis=caxis, idx=[1])
+            idxreal = pl.sl(d, axis=caxis, idx=[[0]])
+            idximag = pl.sl(d, axis=caxis, idx=[[1]])
 
             if axis is None:
                E = np.sum(np.sqrt(X[idxreal]**2 + X[idximag]**2))
