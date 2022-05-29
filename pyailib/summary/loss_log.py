@@ -46,9 +46,9 @@ class LossLog():
         try:
             plt.figure()
         except Exception as e:
-            print(e.args)
-            print(str(e))
-            print(repr(e))
+            # print(e.args)
+            # print(str(e))
+            # print(repr(e))
             import matplotlib; matplotlib.use('Agg');
             import matplotlib.pyplot as plt
             plt.figure()
